@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/AlchemySpells/Test/proyectil.gd" id="1_upm8b"]
 
 [node name="Proyectil" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_upm8b")
 
 [node name="Icon" type="Sprite2D" parent="."]

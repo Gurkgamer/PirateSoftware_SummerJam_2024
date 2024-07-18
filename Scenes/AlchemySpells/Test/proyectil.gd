@@ -9,6 +9,5 @@ func _process(delta: float) -> void:
 	
 
 func set_direction(p_direction : Vector2) -> void:
-	print(p_direction)
 	direction = p_direction
 	rotation = p_direction.angle()

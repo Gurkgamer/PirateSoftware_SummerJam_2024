@@ -1,12 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhu0frqac6027"]
+[gd_scene load_steps=24 format=3 uid="uid://bhu0frqac6027"]
 
+[ext_resource type="Texture2D" uid="uid://du5a2e4lyd0f" path="res://Scenes/Menus/AlchemyMenu/Images/potion.png" id="1_3s12h"]
+[ext_resource type="Texture2D" uid="uid://ci2mv0aqpk5j7" path="res://Scenes/Menus/AlchemyMenu/Images/gaunlet_l.png" id="1_4k64r"]
 [ext_resource type="Script" path="res://Scenes/Menus/AlchemyMenu/Scripts/alchemy_menu.gd" id="1_styp8"]
-[ext_resource type="Texture2D" uid="uid://cq3m8hcalxuea" path="res://Scenes/Menus/AlchemyMenu/Images/potion_alcohol.png" id="2_81twt"]
+[ext_resource type="Texture2D" uid="uid://bklvf0y7ob1tl" path="res://Scenes/Menus/AlchemyMenu/Images/gaunlet_r.png" id="2_4h0vv"]
 [ext_resource type="Texture2D" uid="uid://ckcll5n48rtii" path="res://Scenes/Menus/AlchemyMenu/Images/gaunlet_leaf.png" id="3_mrovw"]
 [ext_resource type="Texture2D" uid="uid://btqmln1iydfn8" path="res://Scenes/Menus/AlchemyMenu/Images/gaunlet_ruby.png" id="4_nldiu"]
 [ext_resource type="Texture2D" uid="uid://ddeyue4r5bu6i" path="res://Scenes/Menus/AlchemyMenu/Images/water.png" id="4_q6wtq"]
 [ext_resource type="Texture2D" uid="uid://ctk0bhw5ypcgx" path="res://Scenes/Menus/AlchemyMenu/Images/vinager.png" id="5_1s5k4"]
-[ext_resource type="Texture2D" uid="uid://bqbhci8b1u3nn" path="res://Scenes/Menus/AlchemyMenu/Images/not_active.png" id="5_u0qdd"]
 [ext_resource type="ButtonGroup" uid="uid://c1kdnqgt7r853" path="res://Scenes/Menus/AlchemyMenu/ButtonGroups/liquids_button_group.tres" id="5_vlyqe"]
 [ext_resource type="Texture2D" uid="uid://ctkaemkp80kr5" path="res://Scenes/Menus/AlchemyMenu/Images/oil.png" id="6_i2jrm"]
 [ext_resource type="Texture2D" uid="uid://bkhj64axsahpy" path="res://Scenes/Menus/AlchemyMenu/Images/alcohol.png" id="7_w0abc"]
@@ -26,7 +27,6 @@
 bg_color = Color(0.119065, 0.179129, 0.330355, 1)
 
 [node name="AlchemyMenu" type="Control" groups=["AlchemyMenu"]]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,7 +57,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TabContainer" type="TabContainer" parent="HBoxContainer/GaunletContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_bq3du")
@@ -84,7 +83,7 @@ alignment = 1
 [node name="Potion0" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet0/SpellContainer/PotionRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_81twt")
+texture = ExtResource("1_3s12h")
 expand_mode = 3
 stretch_mode = 4
 
@@ -126,7 +125,7 @@ alignment = 1
 [node name="Potion1" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet1/SpellContainer/PotionRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_81twt")
+texture = ExtResource("1_3s12h")
 expand_mode = 3
 stretch_mode = 4
 
@@ -138,13 +137,13 @@ alignment = 1
 [node name="GaunletLeft1" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet1/SpellContainer/GaunletRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_mrovw")
+texture = ExtResource("1_4k64r")
 expand_mode = 3
 
 [node name="GaunletRight1" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet1/SpellContainer/GaunletRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("4_nldiu")
+texture = ExtResource("2_4h0vv")
 expand_mode = 3
 
 [node name="Gaunlet2" type="TabBar" parent="HBoxContainer/GaunletContainer/TabContainer"]
@@ -168,7 +167,7 @@ alignment = 1
 [node name="Potion2" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet2/SpellContainer/PotionRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_81twt")
+texture = ExtResource("1_3s12h")
 expand_mode = 3
 stretch_mode = 4
 
@@ -180,13 +179,13 @@ alignment = 1
 [node name="GaunletLeft2" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet2/SpellContainer/GaunletRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_mrovw")
+texture = ExtResource("1_4k64r")
 expand_mode = 3
 
 [node name="GaunletRight2" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet2/SpellContainer/GaunletRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("4_nldiu")
+texture = ExtResource("2_4h0vv")
 expand_mode = 3
 
 [node name="Gaunlet3" type="TabBar" parent="HBoxContainer/GaunletContainer/TabContainer"]
@@ -210,7 +209,7 @@ alignment = 1
 [node name="Potion3" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet3/SpellContainer/PotionRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_81twt")
+texture = ExtResource("1_3s12h")
 expand_mode = 3
 stretch_mode = 4
 
@@ -222,13 +221,13 @@ alignment = 1
 [node name="GaunletLeft3" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet3/SpellContainer/GaunletRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_mrovw")
+texture = ExtResource("1_4k64r")
 expand_mode = 3
 
 [node name="GaunletRight3" type="TextureRect" parent="HBoxContainer/GaunletContainer/TabContainer/Gaunlet3/SpellContainer/GaunletRow"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("4_nldiu")
+texture = ExtResource("2_4h0vv")
 expand_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/GaunletContainer"]
@@ -243,41 +242,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "CLAPCHEMY!"
 
+[node name="ActiveGaunletButton" type="Button" parent="HBoxContainer/GaunletContainer/HBoxContainer"]
+layout_mode = 2
+text = "SET ACTIVE GAUNLET"
+
 [node name="Control2" type="Control" parent="HBoxContainer/GaunletContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="AlchemyContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/AlchemyContainer"]
-layout_mode = 2
-
-[node name="FillerSpace" type="Control" parent="HBoxContainer/AlchemyContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ActiveGaunletButton" type="Button" parent="HBoxContainer/AlchemyContainer/HBoxContainer"]
-layout_mode = 2
-text = "SET ACTIVE GAUNLET"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/AlchemyContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ActiveTexture" type="TextureRect" parent="HBoxContainer/AlchemyContainer/HBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("5_u0qdd")
-expand_mode = 3
-
-[node name="ActiveLabel" type="Label" parent="HBoxContainer/AlchemyContainer/HBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "NOT ACTIVE"
-vertical_alignment = 1
-
-[node name="FillerSpace2" type="Control" parent="HBoxContainer/AlchemyContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -512,7 +485,7 @@ horizontal_alignment = 1
 
 [connection signal="tab_changed" from="HBoxContainer/GaunletContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="HBoxContainer/GaunletContainer/HBoxContainer/ClapchemyButton" to="." method="_on_clapchemy_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/AlchemyContainer/HBoxContainer/ActiveGaunletButton" to="." method="_on_active_gaunlet_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/GaunletContainer/HBoxContainer/ActiveGaunletButton" to="." method="_on_active_gaunlet_button_pressed"]
 [connection signal="toggled" from="HBoxContainer/AlchemyContainer/LiquidsContainer/WaterTexture" to="." method="_on_water_texture_toggled"]
 [connection signal="toggled" from="HBoxContainer/AlchemyContainer/LiquidsContainer/VinegarTexture" to="." method="_on_vinegar_texture_toggled"]
 [connection signal="toggled" from="HBoxContainer/AlchemyContainer/LiquidsContainer/OilTexture" to="." method="_on_oil_texture_toggled"]

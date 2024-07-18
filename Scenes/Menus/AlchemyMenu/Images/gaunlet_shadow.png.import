@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bklvf0y7ob1tl"
-path="res://.godot/imported/gaunlet_r.png-9841068f85af6133f05429a53ef78917.ctex"
+uid="uid://cmq2d1sc5dty2"
+path="res://.godot/imported/gaunlet_shadow.png-8f9b7fef5bc81856cc63454c98a11ab1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Menus/AlchemyMenu/Images/gaunlet_r.png"
-dest_files=["res://.godot/imported/gaunlet_r.png-9841068f85af6133f05429a53ef78917.ctex"]
+source_file="res://Scenes/Menus/AlchemyMenu/Images/gaunlet_shadow.png"
+dest_files=["res://.godot/imported/gaunlet_shadow.png-8f9b7fef5bc81856cc63454c98a11ab1.ctex"]
 
 [params]
 

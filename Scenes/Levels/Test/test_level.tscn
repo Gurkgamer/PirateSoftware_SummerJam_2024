@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d03rsft5kwyde" path="res://NVIDIA_Overlay_IKDcvsQpkT.png" id="1_w1sms"]
 
 [node name="TestLevel" type="Node2D"]
+process_mode = 1
 
 [node name="NvidiaOverlayIkDcvsQpkT" type="Sprite2D" parent="."]
 position = Vector2(464, 270)

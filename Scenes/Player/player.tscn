@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bcqmeah0a81ju" path="res://icon.svg" id="2_v5a83"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/camera_2d.gd" id="3_lojil"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+process_mode = 1
 script = ExtResource("1_06ou5")
 
 [node name="Icon" type="Sprite2D" parent="."]
