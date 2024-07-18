@@ -26,7 +26,7 @@ enum catalysts{
 }
 
 var current_gaunlet_tab : int
-var active_gaunlet_value : int
+var active_gaunlet_value : int # To keep track inside the menu when changing tabs
 var current_liquid : liquids
 var current_material : materials
 var current_catalyst : catalysts
@@ -34,7 +34,7 @@ var current_catalyst : catalysts
 func set_gaunlet_setups(gaunlets : PackedVector3Array, current_gaunlet : int) -> void:
 	for next_gaunlet_position in range(gaunlets.size()):
 		var next_gaunlet = gaunlets[next_gaunlet_position]
-		_on_tab_container_tab_changed(next_gaunlet_position)
+		_on_tab_container_tab_changed(next_gaunlet_position) # Trick the menu that we are changing tabs to be able to set the receiving setup
 		set_liquid_button(next_gaunlet.x)
 		set_material_button(next_gaunlet.y)
 		set_catalyst_button(next_gaunlet.z)
@@ -95,11 +95,6 @@ func _on_tab_container_tab_changed(tab: int) -> void:
 
 @onready var potion: TextureRect
 
-@onready var water_texture: TextureButton = %WaterTexture
-@onready var vinegar_texture: TextureButton = %VinegarTexture
-@onready var oil_texture: TextureButton = %OilTexture
-@onready var alcohol_texture: TextureButton = %AlcoholTexture
-
 const POTION_WATER = preload("res://Scenes/Menus/AlchemyMenu/Images/potion_water.png")
 const POTION_VINEGAR = preload("res://Scenes/Menus/AlchemyMenu/Images/potion_vinegar.png")
 const POTION_OIL = preload("res://Scenes/Menus/AlchemyMenu/Images/potion_oil.png")
@@ -146,11 +141,6 @@ func _on_alcohol_texture_toggled(toggled_on: bool) -> void:
 
 @onready var gaunlet_left: TextureRect
 
-@onready var bone_texture: TextureButton = %BoneTexture
-@onready var leaf_texture: TextureButton = %LeafTexture
-@onready var wood_texture: TextureButton = %WoodTexture
-@onready var leather_texture: TextureButton = %LeatherTexture
-
 const GAUNLET_BONE = preload("res://Scenes/Menus/AlchemyMenu/Images/gaunlet_bone.png")
 const GAUNLET_LEAF = preload("res://Scenes/Menus/AlchemyMenu/Images/gaunlet_leaf.png")
 const GAUNLET_WOOD = preload("res://Scenes/Menus/AlchemyMenu/Images/gaunlet_wood.png")
@@ -194,12 +184,6 @@ func _on_leather_texture_toggled(toggled_on: bool) -> void:
 ## CATALYST BUTTONS
 
 @onready var gaunlet_right: TextureRect
-
-@onready var ruby_texture: TextureButton = %RubyTexture
-@onready var topaz_texture: TextureButton = %TopazTexture
-@onready var emerald_texture: TextureButton = %EmeraldTexture
-@onready var gold_texture: TextureButton = %GoldTexture
-@onready var shadow_texture: TextureButton = %ShadowTexture
 
 const GAUNLET_RUBY = preload("res://Scenes/Menus/AlchemyMenu/Images/gaunlet_ruby.png")
 const GAUNLET_TOPAZ = preload("res://Scenes/Menus/AlchemyMenu/Images/gaunlet_topaz.png")

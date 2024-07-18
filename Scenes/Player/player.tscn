@@ -13,3 +13,9 @@ texture = ExtResource("2_v5a83")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_lojil")
+
+[node name="CoolDownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="CoolDownTimer" to="." method="_on_cool_down_timer_timeout"]

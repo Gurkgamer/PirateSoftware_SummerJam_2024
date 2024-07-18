@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq8drg7t3feo7"]
+[gd_scene load_steps=4 format=3 uid="uid://cq8drg7t3feo7"]
 
 [ext_resource type="PackedScene" uid="uid://cw5ulthl1fbcm" path="res://Scenes/Player/player.tscn" id="1_egbyk"]
 [ext_resource type="Texture2D" uid="uid://d03rsft5kwyde" path="res://NVIDIA_Overlay_IKDcvsQpkT.png" id="1_w1sms"]
+[ext_resource type="PackedScene" uid="uid://u3t288ao6fax" path="res://shadow_enemy_temp.tscn" id="3_q8jqv"]
 
-[node name="TestLevel" type="Node2D"]
+[node name="TestLevel" type="Node2D" groups=["Level"]]
 process_mode = 1
 
 [node name="NvidiaOverlayIkDcvsQpkT" type="Sprite2D" parent="."]
@@ -12,3 +13,12 @@ texture = ExtResource("1_w1sms")
 
 [node name="Player" parent="." instance=ExtResource("1_egbyk")]
 position = Vector2(334, 275)
+
+[node name="ShadowEnemyTemp4" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(34, 298)
+
+[node name="ShadowEnemyTemp5" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(100, 511)
+
+[node name="ShadowEnemyTemp6" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(366, 503)

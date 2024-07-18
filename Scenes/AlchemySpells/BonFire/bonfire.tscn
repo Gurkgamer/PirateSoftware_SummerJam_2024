@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7nbwpj3v6c3y"]
+
+[ext_resource type="Texture2D" uid="uid://be0nqcm066rrd" path="res://Scenes/AlchemySpells/BonFire/Images/bonfire.png" id="1_htkt3"]
+[ext_resource type="Script" path="res://Scenes/AlchemySpells/BonFire/Scripts/bonfire.gd" id="1_png4t"]
+
+[node name="Bonfire" type="Node2D" groups=["BonFire"]]
+process_mode = 1
+script = ExtResource("1_png4t")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 0.564706, 0, 1)
+amount = 20
+lifetime = 1.5
+emission_shape = 3
+emission_rect_extents = Vector2(21, 1)
+gravity = Vector2(0, -60)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_htkt3")
+
+[node name="DieTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DieTimer" to="." method="_on_die_timer_timeout"]

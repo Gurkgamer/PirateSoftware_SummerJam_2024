@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx075ctuc0vkf"]
+
+[ext_resource type="Script" path="res://Scenes/AlchemySpells/FireBall/Scripts/fire_ball.gd" id="1_kylgu"]
+[ext_resource type="Texture2D" uid="uid://cyb7ae5v8haqd" path="res://Scenes/AlchemySpells/FireBall/Images/fireball.png" id="1_nbupn"]
+[ext_resource type="Texture2D" uid="uid://bapgn0qt2ik5l" path="res://Images/Particles/particleA.png" id="2_norea"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mqkk"]
+radius = 42.107
+
+[node name="FireBall" type="Node2D"]
+script = ExtResource("1_kylgu")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+lifetime = 0.3
+texture = ExtResource("2_norea")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 28.335)
+gravity = Vector2(50, 50)
+angle_max = 29.7
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color = Color(1, 0, 0, 0.517647)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.186, 0.186)
+texture = ExtResource("1_nbupn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6mqkk")
+
+[node name="DieTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DieTimer" to="." method="_on_die_timer_timeout"]
