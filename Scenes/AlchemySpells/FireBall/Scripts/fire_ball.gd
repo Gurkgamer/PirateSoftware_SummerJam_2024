@@ -11,7 +11,6 @@ func _process(delta: float) -> void:
 func initialize(player: CharacterBody2D, p_direction : Vector2) -> void:
 	direction = p_direction
 	rotation = p_direction.angle()
-	print(rad_to_deg(rotation))
 	%CPUParticles2D.angle_max = -rad_to_deg(rotation)
 	%CPUParticles2D.angle_min = -rad_to_deg(rotation)
 	%CPUParticles2D.gravity = p_direction * speed / 8

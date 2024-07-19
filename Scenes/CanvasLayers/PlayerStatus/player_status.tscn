@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxdcdi2qveb03"]
+
+[ext_resource type="Script" path="res://Scenes/CanvasLayers/PlayerStatus/Scripts/player_status.gd" id="1_cmkwq"]
+[ext_resource type="Texture2D" uid="uid://c415ayvnkkulp" path="res://Scenes/AlchemySpells/Invalid/Images/invalid_icon.png" id="2_7iwvb"]
+
+[node name="PlayerStatus" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_cmkwq")
+
+[node name="Control" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Health" type="Label" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Health"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Gaunlet0" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpellIcon0" type="TextureRect" parent="Control/VBoxContainer/Gaunlet0"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_7iwvb")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SpellName0" type="Label" parent="Control/VBoxContainer/Gaunlet0"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "INfo"
+
+[node name="Gaunlet1" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpellIcon1" type="TextureRect" parent="Control/VBoxContainer/Gaunlet1"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_7iwvb")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SpellName1" type="Label" parent="Control/VBoxContainer/Gaunlet1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "INfo"
+
+[node name="Gaunlet2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpellIcon2" type="TextureRect" parent="Control/VBoxContainer/Gaunlet2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_7iwvb")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SpellName2" type="Label" parent="Control/VBoxContainer/Gaunlet2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Info"
+
+[node name="Gaunlet3" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpellIcon3" type="TextureRect" parent="Control/VBoxContainer/Gaunlet3"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_7iwvb")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SpellName3" type="Label" parent="Control/VBoxContainer/Gaunlet3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Info"

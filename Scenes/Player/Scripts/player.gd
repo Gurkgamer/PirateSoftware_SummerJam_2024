@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 signal gaunlet_changed(direction : bool)
+signal health_change(new_health : bool)
 
+var health : int = 100
 const SPEED = 300.0
 const PROYECTIL = preload("res://Scenes/AlchemySpells/Test/proyectil.tscn")
 var spell_scene : PackedScene
@@ -15,6 +17,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Cast") and !on_cooldown and spell_scene:
+		#TODO -> Implementar cooldown global de habilidades
 		var mouse_direction = (get_global_mouse_position() - position).normalized()
 		var casted_spell = spell_scene.instantiate()
 		casted_spell.initialize(self, mouse_direction)
