@@ -19,6 +19,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Cast") and spell_scene:
 		var casted_spell = spell_scene.instantiate()
 		if SpellCooldownManager.can_be_cast(casted_spell) :
+			%ClapSFX.play()
 			var mouse_direction = (get_global_mouse_position() - position).normalized()
 			casted_spell.initialize(self, mouse_direction)
 			get_tree().root.add_child(casted_spell)

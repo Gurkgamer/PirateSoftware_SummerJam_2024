@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxdcdi2qveb03"]
 
 [ext_resource type="Script" path="res://Scenes/CanvasLayers/PlayerStatus/Scripts/player_status.gd" id="1_cmkwq"]
-[ext_resource type="Texture2D" uid="uid://c415ayvnkkulp" path="res://Scenes/AlchemySpells/Invalid/Images/invalid_icon.png" id="2_7iwvb"]
+[ext_resource type="Texture2D" uid="uid://c415ayvnkkulp" path="res://Scenes/AlchemySpells/Nothing/Images/nothing_icon.png" id="2_7iwvb"]
 
 [node name="PlayerStatus" type="CanvasLayer"]
 process_mode = 3

@@ -333,7 +333,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/AlchemyContainer/HBoxContainer2"]
+[node name="FormulaNotebookButton" type="TextureButton" parent="HBoxContainer/AlchemyContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("5_jwtap")
@@ -622,7 +623,7 @@ offset_right = -233.0
 
 [connection signal="tab_changed" from="HBoxContainer/GaunletContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="HBoxContainer/GaunletContainer/HBoxContainer/ClapchemyButton" to="." method="_on_clapchemy_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/AlchemyContainer/HBoxContainer2/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/AlchemyContainer/HBoxContainer2/FormulaNotebookButton" to="." method="_on_texture_button_pressed"]
 [connection signal="toggled" from="HBoxContainer/AlchemyContainer/LiquidsContainer/WaterTexture" to="." method="_on_water_texture_toggled"]
 [connection signal="toggled" from="HBoxContainer/AlchemyContainer/LiquidsContainer/VinegarTexture" to="." method="_on_vinegar_texture_toggled"]
 [connection signal="toggled" from="HBoxContainer/AlchemyContainer/LiquidsContainer/OilTexture" to="." method="_on_oil_texture_toggled"]

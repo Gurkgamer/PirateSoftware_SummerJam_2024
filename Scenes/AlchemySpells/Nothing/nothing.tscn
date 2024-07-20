@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://j3r5a6a7xtgt"]
+
+[ext_resource type="Script" path="res://Scenes/AlchemySpells/Nothing/Scripts/nothing.gd" id="1_a5sdo"]
+
+[node name="Nothing" type="Node2D"]
+script = ExtResource("1_a5sdo")

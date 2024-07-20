@@ -5,7 +5,9 @@ extends Control
 signal gaunlet_alchemy_applied(setting : Vector3, gaunlet_position: int)
 signal alchemy_set_active_gaunlet(active_gaunlet_tab : int)
 
+@onready var formula_notebook_button: TextureButton = %FormulaNotebookButton
 @onready var formula_notebook: ColorRect = %FormulaNotebook
+var is_alchemy_menu_open : bool
 
 enum liquids{
 	WATER,
@@ -39,6 +41,9 @@ func _ready() -> void:
 	formula_notebook.return_from_notebook_entries.connect(_on_return_from_notebook_entries)
 	formula_notebook.global_position.x = get_viewport().get_visible_rect().size.x
 
+func _process(delta: float) -> void:	
+	%FormulaNotebookButton.disabled = false if is_alchemy_menu_open else true
+
 func set_gaunlet_setups(gaunlets : PackedVector3Array, current_gaunlet : int) -> void:
 	for next_gaunlet_position in range(gaunlets.size()):
 		var next_gaunlet = gaunlets[next_gaunlet_position]
@@ -57,6 +62,8 @@ func on_notebook_asign_formula(formula_vector : Vector3) -> void:
 	_on_clapchemy_button_pressed()
 	
 func assign_current_formula_to_gaunlet(formula_vector: Vector3) -> void:
+	if formula_vector == Vector3(-1,-1,-1):
+		formula_vector = Vector3(0,0,0)
 	set_liquid_button(formula_vector.x)
 	set_material_button(formula_vector.y)
 	set_catalyst_button(formula_vector.z)
@@ -66,7 +73,7 @@ func get_spell_name_by_vector3(formula_combination : Vector3) -> String:
 	var spell_name_value : String
 	var spell_entry = GameManager.spell_library[formula_combination]
 	if spell_entry is String:
-		spell_name_value = "Nothing"
+		spell_name_value = "Unassigned" #FIXME Esto es poo, hacer que este valor sea una constante y concatenar numeros si realmente se quiere tener tambien el valor de la conbinacion en el nombre
 	else:
 		spell_name_value = spell_entry["name"]
 	return spell_name_value
@@ -87,10 +94,25 @@ func set_inactive_gaunlet_check() -> void:
 	%ActiveTexture.texture = NOT_ACTIVE
 	%ActiveLabel.text = "NOT ACTIVE"
 	
+## BOTON MAGICO
 func _on_clapchemy_button_pressed() -> void:
 	var formula_combination = Vector3(current_liquid, current_material, current_catalyst)
+	var spell_name_obtained = get_spell_name_by_vector3(formula_combination)
+	if spell_name_obtained.contains("Unassigned"):
+		#TODO -> Lanzar mensaje de que no hay formula para esa combinación
+		#SUGGESTION -> Hacer que el jugador pierda la magia en este guante o que lo mantenga?
+		var mantener : bool = false
+		if mantener :
+			return #Mantener magia
+		else :
+			spell_name_obtained = "Nothing"
+			var original_formula_combination = formula_combination
+			formula_combination = Vector3(-1,-1,-1)
+			GameManager.update_player_layer_spell_data(formula_combination, current_gaunlet_tab)
+			GameManager.available_gaunlets[current_gaunlet_tab] = formula_combination
+			formula_combination = original_formula_combination
+	current_tab_gaunlet_spell_name.text = spell_name_obtained
 	gaunlet_alchemy_applied.emit(formula_combination, current_gaunlet_tab)
-	current_tab_gaunlet_spell_name.text = get_spell_name_by_vector3(formula_combination)
 	var is_new_spell = formula_notebook.add_notebook_entry(formula_combination)
 	if is_new_spell :
 		is_new_spell.assign_notebook_formula.connect(on_notebook_asign_formula)
@@ -284,5 +306,5 @@ func _on_return_from_notebook_entries():
 	var viewport_size = get_viewport().get_visible_rect().size
 	#formula_notebook.global_position.x = viewport_size.x
 	var tween = create_tween()
-	tween.tween_property(formula_notebook, "global_position:x", viewport_size.x, 0.1).finished.connect(func() -> void : print("termine"))
+	tween.tween_property(formula_notebook, "global_position:x", viewport_size.x, 0.1)
 	return tween

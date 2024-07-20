@@ -25,8 +25,7 @@ func can_be_cast(spell) -> bool:
 		spell_timers[spell_name] = new_spell_timer
 		return true
 		
-func get_cooldown_remaing_time(spell_name : String) -> float:
-	if spell_name == "Nothing": return 0.0 #FIXME -> Permitir añadir Nothing al sistema de cooldown
+func get_cooldown_remaing_time(spell_name : String) -> float:		 
 	if !spell_name: #NOTE -> No se deberia necesitar comprobar null si se hace bien
 		push_error("No ha llegado el nombre de la magia")
 	if spell_timers.has(spell_name) :
