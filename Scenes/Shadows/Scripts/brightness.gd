@@ -5,9 +5,13 @@ var number_shadows : float
 
 func _process(_delta: float) -> void:
 	var brightness : float
-	
+	number_shadows = 0
 	number_bonfires = get_tree().get_nodes_in_group("BonFire").size()
-	number_shadows = get_tree().get_nodes_in_group("Shadow").size()
+	var shadows = get_tree().get_nodes_in_group("Shadow")
+		
+	for next_shadow in shadows:
+		if next_shadow.is_inside_screen:
+			number_shadows += 1
 	
 	if number_shadows >= 10 :
 		number_shadows = 10
@@ -20,5 +24,5 @@ func _process(_delta: float) -> void:
 		brightness = number_shadows / 10.0
 	else :
 		brightness = (number_shadows  - number_bonfires) / 10.0
-	
-	%TextureRect.modulate.a = brightness
+	var tween = create_tween()
+	tween.tween_property(%TextureRect, "modulate:a",brightness,0.5)	

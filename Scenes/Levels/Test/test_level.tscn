@@ -14,11 +14,11 @@ texture = ExtResource("1_w1sms")
 [node name="Player" parent="." instance=ExtResource("1_egbyk")]
 position = Vector2(334, 275)
 
-[node name="ShadowEnemyTemp4" parent="." instance=ExtResource("3_q8jqv")]
-position = Vector2(34, 298)
-
-[node name="ShadowEnemyTemp5" parent="." instance=ExtResource("3_q8jqv")]
-position = Vector2(100, 511)
-
 [node name="ShadowEnemyTemp6" parent="." instance=ExtResource("3_q8jqv")]
-position = Vector2(366, 503)
+position = Vector2(-346, -163)
+
+[node name="ShadowEnemyTemp" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(-372, 359)
+
+[node name="ShadowEnemyTemp2" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(106, 212)
