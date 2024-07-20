@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://Scripts/game_manager.gd"
 BrightnessManager="*res://Scripts/brightness_manager.gd"
+SpellCooldownManager="*res://Scripts/spell_cooldown_manager.gd"
 
 [display]
 

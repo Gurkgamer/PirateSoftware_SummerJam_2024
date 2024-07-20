@@ -1,7 +1,11 @@
 extends Control
 
+## ALCHEMY MENU ##
+
 signal gaunlet_alchemy_applied(setting : Vector3, gaunlet_position: int)
 signal alchemy_set_active_gaunlet(active_gaunlet_tab : int)
+
+@onready var formula_notebook: ColorRect = %FormulaNotebook
 
 enum liquids{
 	WATER,
@@ -31,17 +35,41 @@ var current_liquid : liquids
 var current_material : materials
 var current_catalyst : catalysts
 
+func _ready() -> void:
+	formula_notebook.return_from_notebook_entries.connect(_on_return_from_notebook_entries)
+	formula_notebook.global_position.x = get_viewport().get_visible_rect().size.x
+
 func set_gaunlet_setups(gaunlets : PackedVector3Array, current_gaunlet : int) -> void:
 	for next_gaunlet_position in range(gaunlets.size()):
 		var next_gaunlet = gaunlets[next_gaunlet_position]
 		_on_tab_container_tab_changed(next_gaunlet_position) # Trick the menu that we are changing tabs to be able to set the receiving setup
-		set_liquid_button(next_gaunlet.x)
-		set_material_button(next_gaunlet.y)
-		set_catalyst_button(next_gaunlet.z)
+		assign_current_formula_to_gaunlet(next_gaunlet)
 	_on_tab_container_tab_changed(current_gaunlet)
 	current_gaunlet_tab = current_gaunlet
 	active_gaunlet_value = current_gaunlet
 	%TabContainer.current_tab = current_gaunlet_tab
+	
+## Funcion que recibira la señal del componente del contenedor de la entrada de formula del notebook
+#TODO -> CUando se haya generado el código para agregar una entrada al notebook, que la suscription llame a este metodo
+# EL nombre de la señal es "assign_notebook_formula"
+func on_notebook_asign_formula(formula_vector : Vector3) -> void:
+	assign_current_formula_to_gaunlet(formula_vector)
+	_on_clapchemy_button_pressed()
+	
+func assign_current_formula_to_gaunlet(formula_vector: Vector3) -> void:
+	set_liquid_button(formula_vector.x)
+	set_material_button(formula_vector.y)
+	set_catalyst_button(formula_vector.z)
+	current_tab_gaunlet_spell_name.text = get_spell_name_by_vector3(formula_vector)
+	
+func get_spell_name_by_vector3(formula_combination : Vector3) -> String:
+	var spell_name_value : String
+	var spell_entry = GameManager.spell_library[formula_combination]
+	if spell_entry is String:
+		spell_name_value = "Nothing"
+	else:
+		spell_name_value = spell_entry["name"]
+	return spell_name_value
 	
 const ACTIVE = preload("res://Scenes/CanvasLayers/AlchemyMenu/Images/active.png")
 const NOT_ACTIVE = preload("res://Scenes/CanvasLayers/AlchemyMenu/Images/not_active.png")
@@ -60,7 +88,14 @@ func set_inactive_gaunlet_check() -> void:
 	%ActiveLabel.text = "NOT ACTIVE"
 	
 func _on_clapchemy_button_pressed() -> void:
-	gaunlet_alchemy_applied.emit(Vector3(current_liquid, current_material, current_catalyst), current_gaunlet_tab)	
+	var formula_combination = Vector3(current_liquid, current_material, current_catalyst)
+	gaunlet_alchemy_applied.emit(formula_combination, current_gaunlet_tab)
+	current_tab_gaunlet_spell_name.text = get_spell_name_by_vector3(formula_combination)
+	var is_new_spell = formula_notebook.add_notebook_entry(formula_combination)
+	if is_new_spell :
+		is_new_spell.assign_notebook_formula.connect(on_notebook_asign_formula)
+		# TODO -> Hacer fanfare cuando se consiga una magia nueva
+		
 	
 func _on_tab_container_tab_changed(tab: int) -> void:
 	current_gaunlet_tab = tab
@@ -69,18 +104,22 @@ func _on_tab_container_tab_changed(tab: int) -> void:
 			potion = %Potion0
 			gaunlet_left = %GaunletLeft0
 			gaunlet_right = %GaunletRight0
+			current_tab_gaunlet_spell_name = %AssignedSpellName0
 		1: 
 			potion = %Potion1
 			gaunlet_left = %GaunletLeft1
 			gaunlet_right = %GaunletRight1
+			current_tab_gaunlet_spell_name = %AssignedSpellName1
 		2:
 			potion = %Potion2
 			gaunlet_left = %GaunletLeft2
 			gaunlet_right = %GaunletRight2
+			current_tab_gaunlet_spell_name = %AssignedSpellName2
 		3:
 			potion = %Potion3
 			gaunlet_left = %GaunletLeft3
 			gaunlet_right = %GaunletRight3
+			current_tab_gaunlet_spell_name = %AssignedSpellName3
 			
 	if active_gaunlet_value != tab :
 		set_inactive_gaunlet_check()
@@ -88,6 +127,8 @@ func _on_tab_container_tab_changed(tab: int) -> void:
 		set_active_gaunlet_check()
 
 ## GAUNLETS
+
+var current_tab_gaunlet_spell_name : Label
 
 #region LIQUIDS
 
@@ -230,3 +271,18 @@ func _on_shadow_texture_toggled(toggled_on: bool) -> void:
 		gaunlet_right.texture = GAUNLET_SHADOW
 
 #endregion
+
+## NOTEBOOK ENTRY LAYER
+
+func _on_texture_button_pressed() -> void:
+	var viewport_size = get_viewport().get_visible_rect().size
+	var tween = create_tween()
+	tween.tween_property(formula_notebook, "global_position:x", viewport_size.x / 2 ,0.1)
+
+func _on_return_from_notebook_entries():
+	#FIXME -> Al cerrar el menu de alquimia, este se queda en pantalla a mitad de camino. mirar causa ya arreglar
+	var viewport_size = get_viewport().get_visible_rect().size
+	#formula_notebook.global_position.x = viewport_size.x
+	var tween = create_tween()
+	tween.tween_property(formula_notebook, "global_position:x", viewport_size.x, 0.1).finished.connect(func() -> void : print("termine"))
+	return tween

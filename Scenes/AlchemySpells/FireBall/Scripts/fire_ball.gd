@@ -3,7 +3,7 @@ extends Node2D
 var direction : Vector2
 var speed : float = 1500.0
 var cast_distance_from_player : float = 50.0
-var cool_down : float = 0.2
+var cooldown : float = 0.2
 
 func _process(delta: float) -> void:
 	position += delta * direction * speed

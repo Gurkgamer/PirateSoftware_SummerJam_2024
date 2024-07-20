@@ -16,15 +16,12 @@ func _physics_process(delta: float) -> void:
 	global_position += direction * delta * SPEED
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Cast") and !on_cooldown and spell_scene:
-		#TODO -> Implementar cooldown global de habilidades
-		var mouse_direction = (get_global_mouse_position() - position).normalized()
+	if event.is_action_pressed("Cast") and spell_scene:
 		var casted_spell = spell_scene.instantiate()
-		casted_spell.initialize(self, mouse_direction)
-		get_tree().root.add_child(casted_spell)
-		cooldown_timer.wait_time = casted_spell.cool_down
-		cooldown_timer.start()
-		on_cooldown = true
+		if SpellCooldownManager.can_be_cast(casted_spell) :
+			var mouse_direction = (get_global_mouse_position() - position).normalized()
+			casted_spell.initialize(self, mouse_direction)
+			get_tree().root.add_child(casted_spell)
 	
 	if event.is_action_pressed("SwapLeft") && !event.is_action_pressed("SwapRight"):
 		gaunlet_changed.emit(false)
@@ -32,9 +29,6 @@ func _input(event: InputEvent) -> void:
 		gaunlet_changed.emit(true)
 
 func set_spell(spell : PackedScene) -> void:
-	if spell_scene != spell :
-		on_cooldown = false
-		cooldown_timer.stop()
 	spell_scene = spell
 
 func _on_cool_down_timer_timeout() -> void:

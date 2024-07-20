@@ -27,6 +27,7 @@ var available_gaunlets : PackedVector3Array = [
 var canvas_alchemy_layer : CanvasLayer
 var player_status_layer
 var alchemy_menu : Control
+var in_alchemy_menu : bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -44,8 +45,6 @@ func _ready() -> void:
 	player_status_layer.set_active_spell(active_gaunlet)
 	#TODO -> Añadir escena invalida como primera magia?????
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
 	if in_menu :
@@ -55,7 +54,7 @@ func _process(_delta: float) -> void:
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("OpenAlchemyMenu"):
-		if !canvas_alchemy_layer :
+		if !in_alchemy_menu :
 			open_alchemy_menu()
 		else :
 			close_alchemy_menu()
@@ -73,26 +72,33 @@ func on_player_health_change(health_value : int) -> void:
 func open_alchemy_menu() -> void:
 	get_tree().paused = true
 	#TODO - Comprobobar que esta en un nivel y no en otro lado [No abrir si no es durante el juego]
-	canvas_alchemy_layer = CanvasLayer.new()
-	canvas_alchemy_layer.layer = 3
-	alchemy_menu = ALCHEMY_MENU_SCENE.instantiate()
-	var viewport_size = get_viewport().get_visible_rect().size
-	alchemy_menu.global_position.x = viewport_size.x
-	canvas_alchemy_layer.add_child(alchemy_menu)
-	get_tree().root.add_child(canvas_alchemy_layer)
-	alchemy_menu.set_gaunlet_setups(available_gaunlets, active_gaunlet)
-	alchemy_menu.gaunlet_alchemy_applied.connect(_on_alchemy_setting_set)
-	alchemy_menu.alchemy_set_active_gaunlet.connect(_on_alchemy_set_active_gaunlet)
+	if !canvas_alchemy_layer:
+		canvas_alchemy_layer = CanvasLayer.new()
+		canvas_alchemy_layer.layer = 3
+		alchemy_menu = ALCHEMY_MENU_SCENE.instantiate()
+		var viewport_size = get_viewport().get_visible_rect().size
+		alchemy_menu.global_position.x = viewport_size.x
+		canvas_alchemy_layer.add_child(alchemy_menu)
+		get_tree().root.add_child(canvas_alchemy_layer)
+	
+		alchemy_menu.set_gaunlet_setups(available_gaunlets, active_gaunlet)
+		alchemy_menu.gaunlet_alchemy_applied.connect(_on_alchemy_setting_set)
+		alchemy_menu.alchemy_set_active_gaunlet.connect(_on_alchemy_set_active_gaunlet)
+	
 	var tween = create_tween()
 	tween.tween_property(alchemy_menu, "position:x", 0,0.1)
+	in_alchemy_menu = true
 	
 func close_alchemy_menu() -> void:
-	var tween = create_tween()
-	var viewport_size = get_viewport().get_visible_rect().size
-	tween.tween_property(alchemy_menu, "position:x", viewport_size.x, 0.1).finished.connect(func() -> void: 
-		canvas_alchemy_layer.queue_free()
-		get_tree().paused = false
-		, CONNECT_ONE_SHOT)
+	var submenu_tween : Tween = alchemy_menu._on_return_from_notebook_entries()
+	submenu_tween.finished.connect(func() -> void:
+		var tween = create_tween()
+		var viewport_size = get_viewport().get_visible_rect().size
+		tween.tween_property(alchemy_menu, "position:x", viewport_size.x, 0.1).finished.connect(func() -> void: 
+			get_tree().paused = false
+			in_alchemy_menu = false
+			, CONNECT_ONE_SHOT)
+			, CONNECT_ONE_SHOT)
 
 func _on_alchemy_set_active_gaunlet(gaunlet_position: int) -> void:
 	active_gaunlet = gaunlet_position
@@ -100,7 +106,7 @@ func _on_alchemy_set_active_gaunlet(gaunlet_position: int) -> void:
 	player_status_layer.set_active_spell(gaunlet_position)
 	var diccionaro = available_gaunlets[active_gaunlet]
 	var spell_data = spell_library[diccionaro]
-	if !spell_data is String:
+	if spell_data is String:
 		spell_data = spell_library[Vector3(-1,-1,-1)]
 	player.set_spell(spell_library[diccionaro]["scene"])
 
@@ -121,7 +127,7 @@ func update_player_layer_spell_data(new_setting : Vector3, gaunlet_position : in
 # LIQUID - SOLID - CATALYST
 var spell_library ={
 	# TODO - Poner escena para invalido aqui
-	Vector3(-1,-1,-1): {"name":"Nothing","scene": null, "icon": preload("res://Scenes/AlchemySpells/Invalid/Images/invalid_icon.png")},
+	Vector3(-1,-1,-1): {"name":"Invalid","scene": null, "icon": preload("res://Scenes/AlchemySpells/Invalid/Images/invalid_icon.png")},
 	# X-X-0 -> Ruby
 	Vector3(0,0,0): "Resource000",
 	Vector3(1,0,0): "Resource100",

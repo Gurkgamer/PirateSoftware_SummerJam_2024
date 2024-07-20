@@ -1,6 +1,6 @@
 extends Node2D
 
-var cool_down : float = 2.0
+var cooldown : float = 2.0
 
 func initialize(player : CharacterBody2D, _mouse_direction : Vector2) -> void :
 	global_position = player.global_position

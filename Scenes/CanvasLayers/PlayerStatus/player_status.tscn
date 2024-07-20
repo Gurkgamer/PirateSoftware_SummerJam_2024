@@ -36,11 +36,21 @@ texture = ExtResource("2_7iwvb")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="SpellName0" type="Label" parent="Control/VBoxContainer/Gaunlet0"]
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Gaunlet0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpellName0" type="Label" parent="Control/VBoxContainer/Gaunlet0/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "INfo"
+
+[node name="SpellProgress0" type="ProgressBar" parent="Control/VBoxContainer/Gaunlet0/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 0.001
+show_percentage = false
 
 [node name="Gaunlet1" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -52,11 +62,20 @@ texture = ExtResource("2_7iwvb")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="SpellName1" type="Label" parent="Control/VBoxContainer/Gaunlet1"]
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Gaunlet1"]
+layout_mode = 2
+
+[node name="SpellName1" type="Label" parent="Control/VBoxContainer/Gaunlet1/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "INfo"
+
+[node name="SpellProgress1" type="ProgressBar" parent="Control/VBoxContainer/Gaunlet1/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 0.001
+show_percentage = false
 
 [node name="Gaunlet2" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -68,11 +87,20 @@ texture = ExtResource("2_7iwvb")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="SpellName2" type="Label" parent="Control/VBoxContainer/Gaunlet2"]
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Gaunlet2"]
+layout_mode = 2
+
+[node name="SpellName2" type="Label" parent="Control/VBoxContainer/Gaunlet2/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Info"
+
+[node name="SpellProgress2" type="ProgressBar" parent="Control/VBoxContainer/Gaunlet2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 0.001
+show_percentage = false
 
 [node name="Gaunlet3" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -84,8 +112,17 @@ texture = ExtResource("2_7iwvb")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="SpellName3" type="Label" parent="Control/VBoxContainer/Gaunlet3"]
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Gaunlet3"]
+layout_mode = 2
+
+[node name="SpellName3" type="Label" parent="Control/VBoxContainer/Gaunlet3/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Info"
+
+[node name="SpellProgress3" type="ProgressBar" parent="Control/VBoxContainer/Gaunlet3/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 0.001
+show_percentage = false
