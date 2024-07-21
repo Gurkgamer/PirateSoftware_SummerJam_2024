@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=3 uid="uid://u3t288ao6fax"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/ShadowCreature/shadow_creature.gd" id="1_dc36f"]
+[ext_resource type="Texture2D" uid="uid://cbm75md2kdpr4" path="res://Scenes/Enemies/ShadowCreature/Images/ShadowCreature_sheet.png" id="2_kh84b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f5cou"]
+radius = 428.019
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1jt1"]
+radius = 49.6488
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqow6"]
+atlas = ExtResource("2_kh84b")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqhcr"]
+atlas = ExtResource("2_kh84b")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gvaw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqow6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqhcr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_573hj"]
+radius = 43.0465
+
+[node name="ShadowCreature" type="CharacterBody2D" groups=["Shadow"]]
+process_mode = 1
+script = ExtResource("1_dc36f")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+
+[node name="VisionArea" type="Area2D" parent="."]
+
+[node name="VisionShape" type="CollisionShape2D" parent="VisionArea"]
+shape = SubResource("CircleShape2D_f5cou")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="DamageShape" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_e1jt1")
+debug_color = Color(0.997959, 0, 0.153954, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_4gvaw")
+animation = &"walk"
+frame_progress = 0.497333
+
+[node name="Control" type="VBoxContainer" parent="."]
+offset_left = -41.0
+offset_top = 30.0
+offset_right = 51.0
+offset_bottom = 107.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+text = "Brightness:"
+
+[node name="BrightnessLevelLabel" type="Label" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+text = "Speed:"
+
+[node name="SpeedLevelLabel" type="Label" parent="Control/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+text = "State:"
+
+[node name="StateLabel" type="Label" parent="Control/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+
+[node name="HurtShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_573hj")
+debug_color = Color(0, 0.647118, 0.219727, 0.42)
+
+[node name="IdleTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
+[connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

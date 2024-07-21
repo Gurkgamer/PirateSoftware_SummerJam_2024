@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0iq5mvma7od8"
-path="res://.godot/imported/shader_white.png-71ff0b61e978ec3a4f195e867da76af5.ctex"
+path="res://.godot/imported/shader_white.png-3f002e265b1d2bef0b26f71301c36026.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Shadows/Images/shader_white.png"
-dest_files=["res://.godot/imported/shader_white.png-71ff0b61e978ec3a4f195e867da76af5.ctex"]
+source_file="res://Scenes/CanvasLayers/Brightness/Images/shader_white.png"
+dest_files=["res://.godot/imported/shader_white.png-3f002e265b1d2bef0b26f71301c36026.ctex"]
 
 [params]
 

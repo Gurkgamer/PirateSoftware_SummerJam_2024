@@ -1,8 +1,6 @@
 extends CanvasLayer
 
-@onready var health: Label = %Health
-
-func _process(_delta: float) -> void:
+func _process(_delta: float) -> void:	
 	%SpellProgress0.value = SpellCooldownManager.get_cooldown_remaing_time(%SpellName0.text)
 	%SpellProgress1.value = SpellCooldownManager.get_cooldown_remaing_time(%SpellName1.text)
 	%SpellProgress2.value = SpellCooldownManager.get_cooldown_remaing_time(%SpellName2.text)
@@ -12,9 +10,6 @@ func _process(_delta: float) -> void:
 	%SpellProgress2.value = 100 if %SpellProgress2.value == 0 else %SpellProgress2.value
 	%SpellProgress3.value = 100 if %SpellProgress3.value == 0 else %SpellProgress3.value
 
-func set_player_hearlth(value : int) -> void:
-	%Health.text = str(value)
-	
 var active_spell_name
 var active_spell_icon
 
@@ -46,7 +41,7 @@ func set_active_spell(active_gaunlet_position) -> void:
 var spell_name
 var spell_icon
 	
-func set_gaunlet_data(name: String, icon: CompressedTexture2D,  position: int) -> void:
+func set_gaunlet_data(p_name: String, icon: CompressedTexture2D,  position: int) -> void:
 	
 	match position:
 		0:
@@ -62,5 +57,8 @@ func set_gaunlet_data(name: String, icon: CompressedTexture2D,  position: int) -
 			spell_name = %SpellName3
 			spell_icon = %SpellIcon3
 
-	spell_name.text = name
+	spell_name.text = p_name
 	spell_icon.texture = icon
+
+func set_player_health(value : int) -> void :
+	%HealthBar.value = value

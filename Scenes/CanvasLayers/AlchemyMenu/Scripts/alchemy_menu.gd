@@ -41,7 +41,7 @@ func _ready() -> void:
 	formula_notebook.return_from_notebook_entries.connect(_on_return_from_notebook_entries)
 	formula_notebook.global_position.x = get_viewport().get_visible_rect().size.x
 
-func _process(delta: float) -> void:	
+func _process(_delta: float) -> void:	
 	%FormulaNotebookButton.disabled = false if is_alchemy_menu_open else true
 
 func set_gaunlet_setups(gaunlets : PackedVector3Array, current_gaunlet : int) -> void:

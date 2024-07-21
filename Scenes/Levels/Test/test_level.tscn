@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cw5ulthl1fbcm" path="res://Scenes/Player/player.tscn" id="1_egbyk"]
 [ext_resource type="Texture2D" uid="uid://d03rsft5kwyde" path="res://NVIDIA_Overlay_IKDcvsQpkT.png" id="1_w1sms"]
-[ext_resource type="PackedScene" uid="uid://u3t288ao6fax" path="res://shadow_enemy_temp.tscn" id="3_q8jqv"]
+[ext_resource type="PackedScene" uid="uid://u3t288ao6fax" path="res://Scenes/Enemies/ShadowCreature/shadow_creature.tscn" id="3_q8jqv"]
 
 [node name="TestLevel" type="Node2D" groups=["Level"]]
 process_mode = 1
@@ -14,11 +14,17 @@ texture = ExtResource("1_w1sms")
 [node name="Player" parent="." instance=ExtResource("1_egbyk")]
 position = Vector2(334, 275)
 
-[node name="ShadowEnemyTemp6" parent="." instance=ExtResource("3_q8jqv")]
-position = Vector2(-346, -163)
-
-[node name="ShadowEnemyTemp" parent="." instance=ExtResource("3_q8jqv")]
-position = Vector2(-372, 359)
-
 [node name="ShadowEnemyTemp2" parent="." instance=ExtResource("3_q8jqv")]
-position = Vector2(106, 212)
+position = Vector2(-181, 278)
+
+[node name="ShadowCreature" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(-206, 114)
+
+[node name="ShadowCreature2" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(-318, 376)
+
+[node name="ShadowCreature3" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(-333, 226)
+
+[node name="ShadowCreature4" parent="." instance=ExtResource("3_q8jqv")]
+position = Vector2(-352, 75)

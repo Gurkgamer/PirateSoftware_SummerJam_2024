@@ -35,7 +35,7 @@ func _ready() -> void:
 	player.health_change.connect(on_player_health_change)
 	#TODO -> Mejor momento para añadir el layer de status?
 	player_status_layer = PLAYER_STATUS.instantiate()
-	player_status_layer.set_player_hearlth(player.health)
+	player_status_layer.set_player_health(player.health)
 	player_status_layer.layer = 2
 	for next_spell_position in range(available_gaunlets.size()-1,-1,-1):
 		update_player_layer_spell_data(available_gaunlets[next_spell_position],next_spell_position)
@@ -71,7 +71,7 @@ func _on_player_gaunlet_change(direction : bool) -> void :
 	_on_alchemy_set_active_gaunlet(active_gaunlet_slot)
 
 func on_player_health_change(health_value : int) -> void:
-	pass
+	player_status_layer.set_player_health(health_value)
 	
 func open_alchemy_menu() -> void:
 	get_tree().paused = true

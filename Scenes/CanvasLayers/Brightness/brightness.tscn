@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkbqr7b4d6s0s"]
 
-[ext_resource type="Script" path="res://Scenes/Shadows/Scripts/brightness.gd" id="1_r8f2h"]
-[ext_resource type="Texture2D" uid="uid://c0iq5mvma7od8" path="res://Scenes/Shadows/Images/shader_white.png" id="2_rutpq"]
+[ext_resource type="Script" path="res://Scenes/CanvasLayers/Brightness/Scripts/brightness.gd" id="1_r8f2h"]
+[ext_resource type="Texture2D" uid="uid://c0iq5mvma7od8" path="res://Scenes/CanvasLayers/Brightness/Images/shader_white.png" id="2_rutpq"]
 
 [node name="Brightness" type="CanvasLayer" groups=["BrightnessLayer"]]
 process_mode = 1

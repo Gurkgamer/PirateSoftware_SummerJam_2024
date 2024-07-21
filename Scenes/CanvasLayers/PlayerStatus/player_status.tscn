@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxdcdi2qveb03"]
+[gd_scene load_steps=5 format=3 uid="uid://bxdcdi2qveb03"]
 
 [ext_resource type="Script" path="res://Scenes/CanvasLayers/PlayerStatus/Scripts/player_status.gd" id="1_cmkwq"]
 [ext_resource type="Texture2D" uid="uid://c415ayvnkkulp" path="res://Scenes/AlchemySpells/Nothing/Images/nothing_icon.png" id="2_7iwvb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eliyy"]
+bg_color = Color(0.231373, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm8f3"]
+bg_color = Color(0, 0.630542, 0.37858, 1)
 
 [node name="PlayerStatus" type="CanvasLayer"]
 process_mode = 3
@@ -21,6 +27,20 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Health"
+
+[node name="HealthBar" type="ProgressBar" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_eliyy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pm8f3")
+step = 1.0
+value = 25.0
+rounded = true
+
+[node name="Control" type="Control" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 2

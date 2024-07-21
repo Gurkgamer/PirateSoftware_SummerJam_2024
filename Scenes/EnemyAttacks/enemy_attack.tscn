@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbq3anshnfgwa"]
+
+[ext_resource type="Script" path="res://Scenes/EnemyAttacks/Scripts/enemy_attack.gd" id="1_tyqyo"]
+[ext_resource type="Texture2D" uid="uid://leuhs5xkeg5v" path="res://Scenes/EnemyAttacks/Images/enemy_attack.png" id="2_8pcm8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jqchp"]
+radius = 74.0068
+
+[node name="EnemyAttack" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_tyqyo")
+
+[node name="LeftAttackSprite" type="Sprite2D" parent="."]
+position = Vector2(-60, 0)
+texture = ExtResource("2_8pcm8")
+flip_h = true
+
+[node name="RightAttackSprite" type="Sprite2D" parent="."]
+position = Vector2(60, 0)
+texture = ExtResource("2_8pcm8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jqchp")
+
+[node name="DieTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="DieTimer" to="." method="_on_die_timer_timeout"]

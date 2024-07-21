@@ -1,19 +1,19 @@
 extends CharacterBody2D
 
 signal gaunlet_changed(direction : bool)
-signal health_change(new_health : bool)
+signal health_change(new_health : int)
 
 var health : int = 100
 const SPEED = 300.0
-const PROYECTIL = preload("res://Scenes/AlchemySpells/Test/proyectil.tscn")
 var spell_scene : PackedScene
-@onready var cooldown_timer: Timer = %CoolDownTimer
-var on_cooldown : bool = false
+var knockback_strength : float = 4.0
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("Left","Right","Up","Down")
 	
-	global_position += direction * delta * SPEED
+	velocity = direction * SPEED
+	
+	move_and_slide()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Cast") and spell_scene:
@@ -32,5 +32,14 @@ func _input(event: InputEvent) -> void:
 func set_spell(spell : PackedScene) -> void:
 	spell_scene = spell
 
-func _on_cool_down_timer_timeout() -> void:
-	on_cooldown = false
+func take_damage(quantity : int, reason) -> void:
+	health -= quantity
+	health_change.emit(health)
+	knockback(reason)
+	
+func knockback(body_hit) -> void:
+	var direction = global_position.direction_to(body_hit.global_position)
+	var explosion_force = direction * knockback_strength
+	velocity += - explosion_force
+	print("pip")
+	
