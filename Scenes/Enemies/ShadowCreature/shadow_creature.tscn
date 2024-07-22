@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://u3t288ao6fax"]
+[gd_scene load_steps=11 format=3 uid="uid://u3t288ao6fax"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/ShadowCreature/shadow_creature.gd" id="1_dc36f"]
 [ext_resource type="Texture2D" uid="uid://cbm75md2kdpr4" path="res://Scenes/Enemies/ShadowCreature/Images/ShadowCreature_sheet.png" id="2_kh84b"]
@@ -34,7 +34,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_573hj"]
 radius = 43.0465
 
-[node name="ShadowCreature" type="CharacterBody2D" groups=["Shadow"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq7hk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7mfm"]
+bg_color = Color(0.863152, 0, 0.0296215, 1)
+
+[node name="ShadowCreature" type="CharacterBody2D" groups=["Enemy", "Shadow"]]
 process_mode = 1
 script = ExtResource("1_dc36f")
 
@@ -58,62 +64,6 @@ sprite_frames = SubResource("SpriteFrames_4gvaw")
 animation = &"walk"
 frame_progress = 0.497333
 
-[node name="Control" type="VBoxContainer" parent="."]
-offset_left = -41.0
-offset_top = 30.0
-offset_right = 51.0
-offset_bottom = 107.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-text = "Brightness:"
-
-[node name="BrightnessLevelLabel" type="Label" parent="Control/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/HBoxContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-text = "Speed:"
-
-[node name="SpeedLevelLabel" type="Label" parent="Control/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/HBoxContainer3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-text = "State:"
-
-[node name="StateLabel" type="Label" parent="Control/HBoxContainer3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-
 [node name="HurtShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_573hj")
 debug_color = Color(0, 0.647118, 0.219727, 0.42)
@@ -124,6 +74,18 @@ wait_time = 5.0
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -32.0
+offset_top = 30.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_kq7hk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k7mfm")
+step = 1.0
+value = 100.0
+show_percentage = false
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

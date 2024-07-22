@@ -8,6 +8,10 @@ const ENEMY_ATTACK = preload("res://Scenes/EnemyAttacks/enemy_attack.tscn")
 var attack_cooldown : float = 2.0
 var attack_strengh : int = 4
 
+var max_health : int = 8
+var health : int
+@onready var health_bar: ProgressBar = %HealthBar
+
 var is_inside_screen : bool = false
 var following_objective : CharacterBody2D
 var default_speed : float = 70.0
@@ -20,9 +24,6 @@ enum states{
 	ATTACK
 }
 
-@onready var brightness_level_label: Label = %BrightnessLevelLabel #DEBUG
-@onready var speed_level_label: Label = %SpeedLevelLabel #DEBUG
-@onready var state_label: Label = $Control/HBoxContainer3/StateLabel #DEBUG
 
 var current_state : states
 
@@ -32,6 +33,9 @@ func _ready() -> void:
 	if !following_objective:
 		following_objective = get_tree().get_first_node_in_group("Player")
 	attack_timer.wait_time = attack_cooldown
+	health_bar.visible = false
+	health = max_health
+	
 	
 func _process(delta: float) -> void:
 	set_speed()
@@ -44,14 +48,19 @@ func _process(delta: float) -> void:
 			animated_sprite_2d.play("walk")
 		states.ATTACK:
 			play_attack(delta)
-	state_label.text = str(states.keys()[current_state])
+	
+	if health < 0:
+		queue_free()
+		
+	if health != max_health :
+		health_bar.visible = true
+		health_bar.value = (health * 100) / max_health
+	
 	move_and_slide()
 
 func set_speed() -> void:
 	var brigthness_level = BrightnessManager.get_brigthness() # entre 0 y 1
-	brightness_level_label.text = str(brigthness_level)
 	speed = default_speed + (speed_brightness_boost * brigthness_level)
-	speed_level_label.text = str(speed)
 
 var rng = RandomNumberGenerator.new()
 
@@ -79,11 +88,12 @@ func play_attack(delta : float) -> void:
 	velocity = Vector2.ZERO
 	
 func _on_attack_timer_timeout() -> void:
-	var current_brightnees = int(BrightnessManager.get_brigthness() * 10)
-	var total_strenght = attack_strengh + current_brightnees
-	var new_attack = ENEMY_ATTACK.instantiate()
-	new_attack.set_values(total_strenght, following_objective)
-	add_child(new_attack)
+	if current_state == states.ATTACK :
+		var current_brightnees = int(BrightnessManager.get_brigthness() * 10)
+		var total_strenght = attack_strengh + current_brightnees
+		var new_attack = ENEMY_ATTACK.instantiate()
+		new_attack.set_values(total_strenght, following_objective)
+		add_child.call_deferred(new_attack)
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	is_inside_screen = true
@@ -103,8 +113,13 @@ func _on_vision_area_body_exited(body: Node2D) -> void:
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		current_state = states.ATTACK
+		_on_attack_timer_timeout()
 
 func _on_damage_area_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		current_state = states.FOLLOW
 		attack_timer.stop()
+
+func take_damage(damage_points : int) -> void:	
+	health -= damage_points
+	
