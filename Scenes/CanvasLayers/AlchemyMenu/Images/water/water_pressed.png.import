@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctkaemkp80kr5"
-path="res://.godot/imported/oil.png-c6a07fbe007eea8bdbfea50aa2fc1273.ctex"
+uid="uid://ddjky3ndl7q5k"
+path="res://.godot/imported/water_pressed.png-b15b626c78fc19e00921e7e5527b0add.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/CanvasLayers/AlchemyMenu/Images/oil.png"
-dest_files=["res://.godot/imported/oil.png-c6a07fbe007eea8bdbfea50aa2fc1273.ctex"]
+source_file="res://Scenes/CanvasLayers/AlchemyMenu/Images/water/water_pressed.png"
+dest_files=["res://.godot/imported/water_pressed.png-b15b626c78fc19e00921e7e5527b0add.ctex"]
 
 [params]
 

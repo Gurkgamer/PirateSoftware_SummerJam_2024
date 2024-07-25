@@ -62,3 +62,6 @@ func set_gaunlet_data(p_name: String, icon: CompressedTexture2D,  position: int)
 
 func set_player_health(value : int) -> void :
 	%HealthBar.value = value
+
+func show_notification(what : String) -> void:
+	%NewItem.show_new_message(what)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctk0bhw5ypcgx"
-path="res://.godot/imported/vinager.png-de56dc85f113747e6c6c5a0d713e0142.ctex"
+uid="uid://cr16nlnm1qswx"
+path="res://.godot/imported/leaf_normal.png-a9073da03c114e5132b91137db5d3dd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/CanvasLayers/AlchemyMenu/Images/vinager.png"
-dest_files=["res://.godot/imported/vinager.png-de56dc85f113747e6c6c5a0d713e0142.ctex"]
+source_file="res://Scenes/CanvasLayers/AlchemyMenu/Images/leaf/leaf_normal.png"
+dest_files=["res://.godot/imported/leaf_normal.png-a9073da03c114e5132b91137db5d3dd1.ctex"]
 
 [params]
 

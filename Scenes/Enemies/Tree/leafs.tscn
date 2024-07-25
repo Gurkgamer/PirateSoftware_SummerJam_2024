@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://y1xr8ubxj7ei"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Tree/Scripts/leafs.gd" id="1_gfntk"]
+[ext_resource type="Texture2D" uid="uid://id5p84xm8p36" path="res://Scenes/Enemies/Tree/Images/leafs.png" id="1_yl1ql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yywwo"]
+size = Vector2(20, 37)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_gfntk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yl1ql")
+
+[node name="PickUpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_yywwo")
+
+[connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]
+[connection signal="body_entered" from="PickUpArea" to="." method="_on_pick_up_area_body_entered"]

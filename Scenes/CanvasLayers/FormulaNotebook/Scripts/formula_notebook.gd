@@ -11,7 +11,6 @@ const NOTEBOOK_ENTRY_CONTAINER = preload("res://Scenes/CanvasLayers/FormulaNoteb
 func add_notebook_entry(formula_vector : Vector3): # Para saber si es una entrada
 	var spell_entry = GameManager.spell_library[formula_vector]
 	if spell_entry is String or formula_vector == Vector3(-1,-1,-1)  :
-		push_error("Algo ha llamado aqui con un entrada sin magia: " + str(formula_vector))
 		return null
 	
 	for next_entry in entry_container.get_children():

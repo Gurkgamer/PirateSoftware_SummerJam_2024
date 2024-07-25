@@ -69,12 +69,16 @@ func play_idle(delta : float) -> void:
 	if idle_timer.is_stopped() :
 		idle_timer.start()
 
+var idle_walk_tween : Tween
+
 func _on_idle_timer_timeout() -> void:
-	var new_position_x = rng.randf_range(global_position.x - 100, global_position.x + 100)
-	var new_position_y = rng.randf_range(global_position.y + 200, global_position.y - 100)
-	animated_sprite_2d.play("walk")
-	var tween = create_tween()
-	tween.tween_property(self, "global_position", Vector2(new_position_x,new_position_y), 2).finished.connect(func() -> void : animated_sprite_2d.stop())
+	pass
+	#TODO -> Buscar form auqe moverse ne indle no atraviese paredes
+	#var new_position_x = rng.randf_range(global_position.x - 100, global_position.x + 100)
+	#var new_position_y = rng.randf_range(global_position.y + 200, global_position.y - 100)
+	#animated_sprite_2d.play("walk")
+	#idle_walk_tween = create_tween()
+	#idle_walk_tween.tween_property(self, "global_position", Vector2(new_position_x,new_position_y), 2).finished.connect(func() -> void : animated_sprite_2d.stop())
 	
 func play_follow(delta : float) -> void:
 	idle_timer.stop()
@@ -114,6 +118,9 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		current_state = states.ATTACK
 		_on_attack_timer_timeout()
+	if body.name == "TileMapLayer" and idle_walk_tween and idle_walk_tween.is_running():
+		idle_walk_tween.stop()
+		
 
 func _on_damage_area_body_exited(body: Node2D) -> void:
 	if body.name == "Player":

@@ -10,6 +10,7 @@ const SPEED = 300.0
 var spell_scene : PackedScene
 var knockback_strength : float = 10
 var knockback_normalized_direction = Vector2(0,0)
+var shield_up : bool = false
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("Left","Right","Up","Down")
@@ -51,7 +52,7 @@ func _input(event: InputEvent) -> void:
 				hand_sprite.speed_scale = 1
 			%ClapSFX.play()
 			hand_sprite.play("clap")
-			var mouse_direction = (get_global_mouse_position() - position).normalized()
+			var mouse_direction = (get_global_mouse_position() - global_position).normalized()
 			casted_spell.initialize(self, mouse_direction)
 			get_tree().root.add_child(casted_spell)
 	
@@ -64,9 +65,13 @@ func set_spell(spell : PackedScene) -> void:
 	spell_scene = spell
 
 func take_damage(quantity : int, reason) -> void:
-	health -= quantity
-	health_change.emit(health)
+	if !shield_up :
+		health -= quantity
+		health_change.emit(health)
 	knockback(reason)
 	
 func knockback(body_hit) -> void:
 	knockback_normalized_direction = body_hit.global_position.direction_to(global_position) # Direccion hacia el jugador, normalizado
+
+func set_shield(state : bool)-> void:
+	shield_up = state

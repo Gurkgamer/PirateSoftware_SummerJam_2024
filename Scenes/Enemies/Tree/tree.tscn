@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsmlanxny26j3"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Tree/Scripts/tree.gd" id="1_3jlkg"]
+[ext_resource type="Texture2D" uid="uid://dcgyu1ty7mu5u" path="res://Scenes/Enemies/Tree/Images/tree.png" id="1_ha5ar"]
+[ext_resource type="Texture2D" uid="uid://g24golffxvrl" path="res://Scenes/Enemies/Tree/Images/treetop.png" id="3_rop47"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1liy2"]
+size = Vector2(61, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjpaj"]
+size = Vector2(54, 51)
+
+[node name="Tree" type="CharacterBody2D"]
+script = ExtResource("1_3jlkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ha5ar")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_1liy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_wjpaj")
+
+[node name="Treetop" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("3_rop47")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

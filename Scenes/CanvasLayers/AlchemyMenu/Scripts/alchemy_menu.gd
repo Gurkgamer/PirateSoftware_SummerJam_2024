@@ -9,6 +9,42 @@ signal alchemy_set_active_gaunlet(active_gaunlet_tab : int)
 @onready var formula_notebook: ColorRect = %FormulaNotebook
 var is_alchemy_menu_open : bool
 
+func enable_ingredient(name : String) -> void:
+	if available_ingredients.has(name.to_lower()):
+		available_ingredients[name.to_lower()] = true
+		refresh_item_availability()
+		
+var available_ingredients = {
+	"water" : false,
+	"vinegar" : true,
+	"oil" : true,
+	"alcohol" : true,
+	"bone" : false,
+	"leaf" : false,
+	"wood" : true,
+	"leather" : false,
+	"ruby" : true,
+	"topaz" : false,
+	"emerald" : false,
+	"gold" : false,
+	"shadow" : false,
+}
+
+func refresh_item_availability() -> void:
+	%WaterTexture.disabled = !available_ingredients["water"]
+	%VinegarTexture.disabled = !available_ingredients["vinegar"]
+	%OilTexture.disabled = !available_ingredients["oil"]
+	%AlcoholTexture.disabled = !available_ingredients["alcohol"]
+	%BoneTexture.disabled = !available_ingredients["bone"]
+	%LeafTexture.disabled = !available_ingredients["leaf"]
+	%WoodTexture.disabled = !available_ingredients["wood"]
+	%LeatherTexture.disabled = !available_ingredients["leather"]
+	%RubyTexture.disabled = !available_ingredients["ruby"]
+	%TopazTexture.disabled = !available_ingredients["topaz"]
+	%EmeraldTexture.disabled = !available_ingredients["emerald"]
+	%GoldTexture.disabled = !available_ingredients["gold"]
+	%ShadowTexture.disabled = !available_ingredients["shadow"]
+	
 enum liquids{
 	WATER,
 	VINEGAR,
@@ -40,9 +76,11 @@ var current_catalyst : catalysts
 func _ready() -> void:
 	formula_notebook.return_from_notebook_entries.connect(_on_return_from_notebook_entries)
 	formula_notebook.global_position.x = get_viewport().get_visible_rect().size.x
+	refresh_item_availability()
 
 func _process(_delta: float) -> void:	
 	%FormulaNotebookButton.disabled = false if is_alchemy_menu_open else true
+	
 
 func set_gaunlet_setups(gaunlets : PackedVector3Array, current_gaunlet : int) -> void:
 	for next_gaunlet_position in range(gaunlets.size()):

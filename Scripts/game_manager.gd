@@ -130,7 +130,7 @@ func update_player_layer_spell_data(new_setting : Vector3, gaunlet_slot : int) -
 	if !spell_packedscene is String:
 		player_status_layer.set_gaunlet_data(spell_packedscene["name"], spell_packedscene["icon"], gaunlet_slot)
 	else : #CHORE - Quitar esto al acabar
-		print("NO HAY PARA ESTA COMBINACION")
+		print("NO HAY PARA ESTA COMBINACION " + str(new_setting))
 	
 # LIQUID - SOLID - CATALYST
 var spell_library ={
@@ -143,10 +143,10 @@ var spell_library ={
 	Vector3(3,0,0): "Unassigned300",
 	Vector3(0,1,0): "Unassigned010",
 	Vector3(1,1,0): "Unassigned110",
-	Vector3(2,1,0): "Unassigned210",
-	Vector3(3,1,0): "Unassigned310",
+	Vector3(2,1,0): "Unassigned210", # Arbol que cura
+	Vector3(3,1,0): {"name": "Ivystream", "scene":preload("res://Scenes/AlchemySpells/Ivystream/ivystream.tscn"), "icon": preload("res://Scenes/AlchemySpells/Ivystream/Images/ivystream_icon.png")},
 	Vector3(0,2,0): "Unassigned020", # Vapor - FieldSkill - Steam like puzzles?
-	Vector3(1,2,0): "Unassigned120", # FireShield - Defensive - Fire attack protection
+	Vector3(1,2,0): {"name":"Fireshield", "scene":preload("res://Scenes/AlchemySpells/Fireshield/fireshield.tscn"), "icon":preload("res://Scenes/AlchemySpells/Fireshield/Images/fireshield_icon.png")}, # FireShield - Defensive - Fire attack protection
 	Vector3(2,2,0): {"name": "Bonfire", "scene" : preload("res://Scenes/AlchemySpells/BonFire/bonfire.tscn"), "icon" : preload("res://Scenes/AlchemySpells/BonFire/Images/bonfire_icon.png")}, # FieldSkill - Increases level brigthness
 	Vector3(3,2,0): {"name": "Fireball", "scene" : preload("res://Scenes/AlchemySpells/FireBall/fire_ball.tscn"), "icon" : preload("res://Scenes/AlchemySpells/FireBall/Images/fireball_icon.png")}, # Offensive
 	Vector3(0,3,0): "Unassigned030",
@@ -222,3 +222,9 @@ var spell_library ={
 	Vector3(2,3,4): "Unassigned234",
 	Vector3(3,3,4): "Unassigned334"
 }
+
+func enable_ingredient(name : String)->void:
+	alchemy_menu.enable_ingredient(name)
+	
+func show_new_item_notification(what : String) -> void:
+	player_status_layer.show_notification(what)

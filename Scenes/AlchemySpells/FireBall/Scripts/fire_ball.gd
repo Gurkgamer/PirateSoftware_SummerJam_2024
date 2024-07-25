@@ -23,3 +23,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		body.take_damage(damage)
 		queue_free()
+	elif body.name == "TileMapLayer" :
+		queue_free()

@@ -1,28 +1,46 @@
-[gd_scene load_steps=25 format=3 uid="uid://bhu0frqac6027"]
+[gd_scene load_steps=43 format=3 uid="uid://bhu0frqac6027"]
 
 [ext_resource type="Script" path="res://Scenes/CanvasLayers/AlchemyMenu/Scripts/alchemy_menu.gd" id="1_styp8"]
 [ext_resource type="Texture2D" uid="uid://cq3m8hcalxuea" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/potion_alcohol.png" id="2_81twt"]
 [ext_resource type="Texture2D" uid="uid://ckcll5n48rtii" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/gaunlet_leaf.png" id="3_mrovw"]
 [ext_resource type="Texture2D" uid="uid://btqmln1iydfn8" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/gaunlet_ruby.png" id="4_nldiu"]
-[ext_resource type="Texture2D" uid="uid://ddeyue4r5bu6i" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/water.png" id="4_q6wtq"]
-[ext_resource type="Texture2D" uid="uid://ctk0bhw5ypcgx" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/vinager.png" id="5_1s5k4"]
 [ext_resource type="Texture2D" uid="uid://2xtbni2sjew8" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/formula_book.png" id="5_jwtap"]
 [ext_resource type="Texture2D" uid="uid://bqbhci8b1u3nn" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/not_active.png" id="5_u0qdd"]
 [ext_resource type="ButtonGroup" uid="uid://c1kdnqgt7r853" path="res://Scenes/CanvasLayers/AlchemyMenu/ButtonGroups/liquids_button_group.tres" id="5_vlyqe"]
-[ext_resource type="Texture2D" uid="uid://ctkaemkp80kr5" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/oil.png" id="6_i2jrm"]
-[ext_resource type="Texture2D" uid="uid://bkhj64axsahpy" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/alcohol.png" id="7_w0abc"]
-[ext_resource type="Texture2D" uid="uid://bpw1oupto6lid" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/bone.png" id="8_fvvlx"]
-[ext_resource type="Texture2D" uid="uid://fbhlns2yyrd0" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/leaf.png" id="9_vg3bw"]
+[ext_resource type="Texture2D" uid="uid://d0ni3tvhvebsr" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/water/water_normal.png" id="7_u68yl"]
+[ext_resource type="Texture2D" uid="uid://ddjky3ndl7q5k" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/water/water_pressed.png" id="8_drow8"]
+[ext_resource type="Texture2D" uid="uid://drl32y15rr7tv" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/water/water_disabled.png" id="9_30ev6"]
 [ext_resource type="ButtonGroup" uid="uid://dcdq5tq367sow" path="res://Scenes/CanvasLayers/AlchemyMenu/ButtonGroups/material_button_group.tres" id="10_1wnwq"]
-[ext_resource type="Texture2D" uid="uid://d4gsaacghot74" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/wood.png" id="10_ak5qa"]
-[ext_resource type="Texture2D" uid="uid://yl0ygp6ou8fx" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/leather.png" id="11_ffky1"]
-[ext_resource type="Texture2D" uid="uid://hbh4w8yqhhbk" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/ruby.png" id="12_u5jgt"]
+[ext_resource type="Texture2D" uid="uid://bjum5vsp1i52" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/vinegar/vinegar_normal.png" id="10_ja7d0"]
+[ext_resource type="Texture2D" uid="uid://dp767h7xjsapa" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/oil/oil_normal.png" id="11_5dwbr"]
+[ext_resource type="Texture2D" uid="uid://bt7idbsemlh3q" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/vinegar/vinegar_pressed.png" id="11_4727j"]
+[ext_resource type="Texture2D" uid="uid://dhhqtgq4oun6s" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/oil/oil_pressed.png" id="12_ltpxr"]
 [ext_resource type="Texture2D" uid="uid://q0slkujqcx4q" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/topaz.png" id="13_3x7qf"]
+[ext_resource type="Texture2D" uid="uid://ekknnhhl5lt0" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/oil/oil_disabled.png" id="13_38ite"]
 [ext_resource type="Texture2D" uid="uid://qs54lg5e5xrh" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/emerald.png" id="14_eviue"]
+[ext_resource type="Texture2D" uid="uid://bq0xs02rhk836" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/alcohol/alcohol_normal.png" id="15_08ckr"]
 [ext_resource type="ButtonGroup" uid="uid://ib4l8pheokkb" path="res://Scenes/CanvasLayers/AlchemyMenu/ButtonGroups/catalyst_button_group.tres" id="15_hs0bd"]
 [ext_resource type="Texture2D" uid="uid://dw7f8srjbxk7g" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/gold.png" id="15_ixkp0"]
 [ext_resource type="Texture2D" uid="uid://bqwcqakpjnwau" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/shadow.png" id="16_5hytd"]
+[ext_resource type="Texture2D" uid="uid://bwijwlunicv8a" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/alcohol/alcohol_pressed.png" id="16_n3vu8"]
+[ext_resource type="Texture2D" uid="uid://c6gfd6hnavban" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/alcohol/alcohol_disabled.png" id="17_6b7yy"]
+[ext_resource type="Texture2D" uid="uid://cwnp3ty2qe5eu" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/bone/bone_normal.png" id="19_ot0ke"]
+[ext_resource type="Texture2D" uid="uid://cnwjf4sabeom" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/bone/bone_pressed.png" id="20_cwidl"]
+[ext_resource type="Texture2D" uid="uid://coegl34ary6lp" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/bone/bone_disabled.png" id="21_t028e"]
+[ext_resource type="Texture2D" uid="uid://cr16nlnm1qswx" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/leaf/leaf_normal.png" id="22_pp1mq"]
 [ext_resource type="PackedScene" uid="uid://d1pamf7vuhbmg" path="res://Scenes/CanvasLayers/FormulaNotebook/formula_notebook.tscn" id="23_dkapr"]
+[ext_resource type="Texture2D" uid="uid://ccfupjbq0jjwk" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/leaf/leaf_pressed.png" id="23_ko7iq"]
+[ext_resource type="Texture2D" uid="uid://d1jita16fs1v0" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/leaf/leaf_disabled.png" id="24_1ire2"]
+[ext_resource type="Texture2D" uid="uid://wpxras5virf3" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/wood/wood_normal.png" id="25_ja4i0"]
+[ext_resource type="Texture2D" uid="uid://clmy5iktcv3yv" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/wood/wood_pressed.png" id="26_qfgs4"]
+[ext_resource type="Texture2D" uid="uid://bq2075nb4t4u" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/wood/wood_disabled.png" id="27_5u58v"]
+[ext_resource type="Texture2D" uid="uid://bxyni7mtulqd4" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/leather/leather_normal.png" id="28_t7owe"]
+[ext_resource type="Texture2D" uid="uid://cwxisdc60wqbv" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/leather/leather_pressed.png" id="29_6nopn"]
+[ext_resource type="Texture2D" uid="uid://dyasttwg6bwpk" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/leather/leather_disabled.png" id="30_lckqn"]
+[ext_resource type="Texture2D" uid="uid://siu512hv8rdj" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/ruby/ruby_normal.png" id="32_s7pn3"]
+[ext_resource type="Texture2D" uid="uid://dmjppj7x6rksp" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/ruby/ruby_pressed.png" id="33_4m54t"]
+[ext_resource type="Texture2D" uid="uid://bsx23vasl2i8k" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/ruby/ruby_disabled.png" id="34_coypn"]
+[ext_resource type="Texture2D" uid="uid://8wgloi6ijydv" path="res://Scenes/CanvasLayers/AlchemyMenu/Images/gold/gold_disabled.png" id="38_0t6kv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq3du"]
 bg_color = Color(0.119065, 0.179129, 0.330355, 1)
@@ -358,7 +376,9 @@ size_flags_vertical = 3
 focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("5_vlyqe")
-texture_normal = ExtResource("4_q6wtq")
+texture_normal = ExtResource("7_u68yl")
+texture_pressed = ExtResource("8_drow8")
+texture_disabled = ExtResource("9_30ev6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -369,7 +389,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("5_vlyqe")
-texture_normal = ExtResource("5_1s5k4")
+texture_normal = ExtResource("10_ja7d0")
+texture_pressed = ExtResource("11_4727j")
+texture_disabled = ExtResource("13_38ite")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -380,7 +402,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("5_vlyqe")
-texture_normal = ExtResource("6_i2jrm")
+texture_normal = ExtResource("11_5dwbr")
+texture_pressed = ExtResource("12_ltpxr")
+texture_disabled = ExtResource("13_38ite")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -391,7 +415,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("5_vlyqe")
-texture_normal = ExtResource("7_w0abc")
+texture_normal = ExtResource("15_08ckr")
+texture_pressed = ExtResource("16_n3vu8")
+texture_disabled = ExtResource("17_6b7yy")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -434,7 +460,9 @@ size_flags_vertical = 3
 focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("10_1wnwq")
-texture_normal = ExtResource("8_fvvlx")
+texture_normal = ExtResource("19_ot0ke")
+texture_pressed = ExtResource("20_cwidl")
+texture_disabled = ExtResource("21_t028e")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -443,9 +471,12 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+disabled = true
 toggle_mode = true
 button_group = ExtResource("10_1wnwq")
-texture_normal = ExtResource("9_vg3bw")
+texture_normal = ExtResource("22_pp1mq")
+texture_pressed = ExtResource("23_ko7iq")
+texture_disabled = ExtResource("24_1ire2")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -456,7 +487,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("10_1wnwq")
-texture_normal = ExtResource("10_ak5qa")
+texture_normal = ExtResource("25_ja4i0")
+texture_pressed = ExtResource("26_qfgs4")
+texture_disabled = ExtResource("27_5u58v")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -467,7 +500,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("10_1wnwq")
-texture_normal = ExtResource("11_ffky1")
+texture_normal = ExtResource("28_t7owe")
+texture_pressed = ExtResource("29_6nopn")
+texture_disabled = ExtResource("30_lckqn")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -509,7 +544,9 @@ size_flags_vertical = 3
 focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("15_hs0bd")
-texture_normal = ExtResource("12_u5jgt")
+texture_normal = ExtResource("32_s7pn3")
+texture_pressed = ExtResource("33_4m54t")
+texture_disabled = ExtResource("34_coypn")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -521,6 +558,7 @@ focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("15_hs0bd")
 texture_normal = ExtResource("13_3x7qf")
+texture_disabled = ExtResource("34_coypn")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -532,6 +570,7 @@ focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("15_hs0bd")
 texture_normal = ExtResource("14_eviue")
+texture_disabled = ExtResource("34_coypn")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -543,6 +582,7 @@ focus_mode = 0
 toggle_mode = true
 button_group = ExtResource("15_hs0bd")
 texture_normal = ExtResource("15_ixkp0")
+texture_disabled = ExtResource("38_0t6kv")
 ignore_texture_size = true
 stretch_mode = 5
 

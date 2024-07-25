@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkhj64axsahpy"
-path="res://.godot/imported/alcohol.png-08b977d5df9fb215795191d0d65c9438.ctex"
+uid="uid://cwnp3ty2qe5eu"
+path="res://.godot/imported/bone_normal.png-711a86240d5d387236264164d95a0c4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/CanvasLayers/AlchemyMenu/Images/alcohol.png"
-dest_files=["res://.godot/imported/alcohol.png-08b977d5df9fb215795191d0d65c9438.ctex"]
+source_file="res://Scenes/CanvasLayers/AlchemyMenu/Images/bone/bone_normal.png"
+dest_files=["res://.godot/imported/bone_normal.png-711a86240d5d387236264164d95a0c4b.ctex"]
 
 [params]
 
