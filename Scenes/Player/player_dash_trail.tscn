@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dswn0p4gegahi"]
+
+[ext_resource type="Texture2D" uid="uid://dw553exufhiiu" path="res://Scenes/Player/Images/player_body.png" id="1_k6j3m"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/player_dash_trail.gd" id="2_c4yof"]
+
+[node name="PlayerDashTrail" type="Sprite2D"]
+modulate = Color(0, 0.396078, 1, 1)
+texture = ExtResource("1_k6j3m")
+region_enabled = true
+region_rect = Rect2(64, 0, 64, 64)
+script = ExtResource("2_c4yof")

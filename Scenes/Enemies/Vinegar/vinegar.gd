@@ -9,10 +9,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
+	
 func _on_pick_up_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player" :
-		GameManager.enable_ingredient("leaf")
+		GameManager.enable_ingredient("vinegar")
 		queue_free()
-		GameManager.show_new_item_notification("leafs")
+		GameManager.show_new_item_notification("vinegar")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cw5ulthl1fbcm"]
+[gd_scene load_steps=17 format=3 uid="uid://cw5ulthl1fbcm"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/player.gd" id="1_06ou5"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/camera_2d.gd" id="3_lojil"]
@@ -73,6 +73,12 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia7sq"]
+bg_color = Color(0, 0.639467, 0.940088, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kku86"]
+bg_color = Color(0.0838399, 0, 0.547803, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 1
 script = ExtResource("1_06ou5")
@@ -97,3 +103,20 @@ animation = &"walk"
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_8auih")
 animation = &"clap"
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="DashCooldown" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -35.0
+offset_top = 43.0
+offset_right = 34.0
+offset_bottom = 48.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ia7sq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kku86")
+fill_mode = 1
+show_percentage = false
+
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

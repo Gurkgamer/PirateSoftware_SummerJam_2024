@@ -16,13 +16,13 @@ func enable_ingredient(name : String) -> void:
 		
 var available_ingredients = {
 	"water" : false,
-	"vinegar" : true,
+	"vinegar" : false,
 	"oil" : true,
 	"alcohol" : true,
 	"bone" : false,
-	"leaf" : true,
+	"leaf" : false,
 	"wood" : true,
-	"leather" : true,
+	"leather" : false, #stone
 	"ruby" : true,
 	"topaz" : false,
 	"emerald" : false,

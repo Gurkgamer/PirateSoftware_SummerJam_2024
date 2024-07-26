@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://cq8drg7t3feo7"]
+[gd_scene load_steps=8 format=4 uid="uid://cq8drg7t3feo7"]
 
 [ext_resource type="PackedScene" uid="uid://cw5ulthl1fbcm" path="res://Scenes/Player/player.tscn" id="1_egbyk"]
 [ext_resource type="Texture2D" uid="uid://bo1wp5j275ebr" path="res://Scenes/Levels/Test/ImageSheets/Background.png" id="1_ytp67"]
 [ext_resource type="PackedScene" uid="uid://bsmlanxny26j3" path="res://Scenes/Enemies/Tree/tree.tscn" id="3_36no8"]
 [ext_resource type="PackedScene" uid="uid://u3t288ao6fax" path="res://Scenes/Enemies/ShadowCreature/shadow_creature.tscn" id="3_q8jqv"]
+[ext_resource type="PackedScene" uid="uid://b827020bmaecx" path="res://Scenes/Enemies/Vinegar/vinegar.tscn" id="5_y3m4l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yk7c"]
 texture = ExtResource("1_ytp67")
@@ -75,3 +76,6 @@ position = Vector2(-529, 782)
 
 [node name="ShadowCreature4" parent="." instance=ExtResource("3_q8jqv")]
 position = Vector2(-900, 201)
+
+[node name="Vinegar" parent="." instance=ExtResource("5_y3m4l")]
+position = Vector2(-948, 797)

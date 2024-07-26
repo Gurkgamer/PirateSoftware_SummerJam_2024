@@ -4,14 +4,15 @@ signal gaunlet_changed(direction : bool)
 signal health_change(new_health : int)
 @onready var body_sprite: AnimatedSprite2D = %BodySprite
 @onready var hand_sprite: AnimatedSprite2D = $HandSprite
-
 var health : int = 100 :
 	get:
 		return health
 	set (value):
 		health = clamp(value, 0, 100)
 		health_change.emit(health)
-const SPEED = 300.0
+var speed = 300.0
+var dash_speed = 500.0
+const PLAYER_DASH_TRAIL = preload("res://Scenes/Player/player_dash_trail.tscn")
 var spell_scene : PackedScene
 var knockback_strength : float = 10
 var knockback_normalized_direction = Vector2(0,0)
@@ -25,9 +26,9 @@ func _physics_process(delta: float) -> void:
 		direction = Vector2.ZERO
 	
 	if knockback_normalized_direction and !direction:
-		velocity = knockback_normalized_direction * SPEED * knockback_strength
+		velocity = knockback_normalized_direction * speed * knockback_strength
 	elif direction and !knockback_normalized_direction:
-		velocity = direction * SPEED
+		velocity = direction * speed
 	else:
 		velocity = Vector2.ZERO
 		
@@ -45,7 +46,20 @@ func _physics_process(delta: float) -> void:
 		body_sprite.flip_h = false
 		hand_sprite.flip_h = false
 	
+	if dashing :
+		var dash_trail_instance = PLAYER_DASH_TRAIL.instantiate()
+		dash_trail_instance.flip_h = body_sprite.flip_h
+		dash_trail_instance.global_position = global_position
+		get_parent().add_child(dash_trail_instance)
+	
+	%DashCooldown.value = (%DashCooldownTimer.time_left * 100) / %DashCooldownTimer.wait_time
+	print(%DashCooldown.value)
+	%DashCooldown.visible = false if %DashCooldown.value == 0 else true
+	
 	move_and_slide()
+
+var dashing : bool = false
+var dashing_cooldown : bool = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Cast") and spell_scene:
@@ -65,6 +79,20 @@ func _input(event: InputEvent) -> void:
 		gaunlet_changed.emit(false)
 	elif event.is_action_pressed("SwapRight") && !event.is_action_pressed("SwapLeft"):
 		gaunlet_changed.emit(true)
+	
+	if event.is_action_pressed("Dash") and !dashing and !dashing_cooldown:
+		speed = speed + dash_speed
+		dashing = true
+		dashing_cooldown = true
+		%DashCooldownTimer.start()
+		get_tree().create_timer(0.2).timeout.connect(func()->void :
+			speed = speed - dash_speed
+			dashing = false
+			)
+			
+func _on_dash_cooldown_timer_timeout() -> void:
+	dashing_cooldown = false
+
 
 func set_spell(spell : PackedScene) -> void:
 	spell_scene = spell
