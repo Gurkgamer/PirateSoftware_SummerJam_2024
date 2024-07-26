@@ -17,13 +17,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func initialize(p_player : CharacterBody2D, mouse_direction : Vector2) -> void:	
-	player_global_position = p_player.global_position		
+func initialize(p_player : CharacterBody2D, mouse_direction : Vector2) -> void:
+	player_global_position = p_player.global_position
 	mouse_vector = mouse_direction
 
 func _on_next_ivy_timeout() -> void:
 	if num_ivys <= max_ivys :
-		var new_ivy = IVY.instantiate()		
+		var new_ivy = IVY.instantiate()
 		new_ivy.global_position = player_global_position + num_ivys * 25 * mouse_vector
 		%NextIvy.start()
 		add_child(new_ivy)

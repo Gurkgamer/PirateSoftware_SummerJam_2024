@@ -3,11 +3,8 @@ extends CharacterBody2D
 const LEAFS = preload("res://Scenes/Enemies/Tree/leafs.tscn")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("hello " + body.name)
 	if body.name == "Fireball":
 		queue_free()
-		#TODO -> Drop de hoja
-
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "Fireball":

@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://qouj7jvsqxlx"]
+
+[ext_resource type="Texture2D" uid="uid://dmb82aek2p80i" path="res://Scenes/AlchemySpells/Healthstem/Images/healthstem_zone.png" id="1_3apxb"]
+[ext_resource type="Script" path="res://Scenes/AlchemySpells/Healthstem/Scripts/healthstem.gd" id="1_kvhja"]
+[ext_resource type="Texture2D" uid="uid://d31wi132yi7wa" path="res://Scenes/AlchemySpells/Healthstem/Images/healthstem.png" id="2_0pp15"]
+[ext_resource type="Texture2D" uid="uid://s81fxvkc8adb" path="res://Scenes/AlchemySpells/Healthstem/Images/health_particle.png" id="3_0oal2"]
+
+[sub_resource type="Gradient" id="Gradient_f1jp6"]
+offsets = PackedFloat32Array(0, 0.354571, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cydgm"]
+radius = 13.9999
+height = 130.006
+
+[node name="Healthstem" type="Node2D"]
+script = ExtResource("1_kvhja")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+texture = ExtResource("1_3apxb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0pp15")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(2, 27)
+amount = 2
+texture = ExtResource("3_0oal2")
+emission_shape = 3
+emission_rect_extents = Vector2(66.815, 0)
+gravity = Vector2(0, -100)
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_f1jp6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 23)
+rotation = 1.56734
+shape = SubResource("CapsuleShape2D_cydgm")
+
+[node name="DieTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+
+[node name="HealingTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="DieTimer" to="." method="_on_die_timer_timeout"]
+[connection signal="timeout" from="HealingTimer" to="." method="_on_healing_timer_timeout"]

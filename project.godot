@@ -49,6 +49,7 @@ BrightnessLayer=""
 BonFire=""
 Shadow=""
 Enemy=""
+AttackSpell=""
 
 [input]
 

@@ -523,7 +523,7 @@ horizontal_alignment = 1
 
 [node name="LeatherLabel" type="Label" parent="HBoxContainer/AlchemyContainer/SolidContainer"]
 layout_mode = 2
-text = "Leather"
+text = "Stone"
 horizontal_alignment = 1
 
 [node name="CatalystLabel" type="Label" parent="HBoxContainer/AlchemyContainer"]

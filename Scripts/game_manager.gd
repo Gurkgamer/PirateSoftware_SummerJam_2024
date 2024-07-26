@@ -143,14 +143,14 @@ var spell_library ={
 	Vector3(3,0,0): "Unassigned300",
 	Vector3(0,1,0): "Unassigned010",
 	Vector3(1,1,0): "Unassigned110",
-	Vector3(2,1,0): "Unassigned210", # Arbol que cura
+	Vector3(2,1,0): {"name" : "Healthstem", "scene":preload("res://Scenes/AlchemySpells/Healthstem/healthstem.tscn"), "icon": preload("res://Scenes/AlchemySpells/Healthstem/Images/healthstem_icon.png")}, # Arbol que cura
 	Vector3(3,1,0): {"name": "Ivystream", "scene":preload("res://Scenes/AlchemySpells/Ivystream/ivystream.tscn"), "icon": preload("res://Scenes/AlchemySpells/Ivystream/Images/ivystream_icon.png")},
 	Vector3(0,2,0): "Unassigned020", # Vapor - FieldSkill - Steam like puzzles?
 	Vector3(1,2,0): {"name":"Fireshield", "scene":preload("res://Scenes/AlchemySpells/Fireshield/fireshield.tscn"), "icon":preload("res://Scenes/AlchemySpells/Fireshield/Images/fireshield_icon.png")}, # FireShield - Defensive - Fire attack protection
 	Vector3(2,2,0): {"name": "Bonfire", "scene" : preload("res://Scenes/AlchemySpells/BonFire/bonfire.tscn"), "icon" : preload("res://Scenes/AlchemySpells/BonFire/Images/bonfire_icon.png")}, # FieldSkill - Increases level brigthness
 	Vector3(3,2,0): {"name": "Fireball", "scene" : preload("res://Scenes/AlchemySpells/FireBall/fire_ball.tscn"), "icon" : preload("res://Scenes/AlchemySpells/FireBall/Images/fireball_icon.png")}, # Offensive
 	Vector3(0,3,0): "Unassigned030",
-	Vector3(1,3,0): "Unassigned130",
+	Vector3(1,3,0): {"name":"Hardball", "scene":preload("res://Scenes/AlchemySpells/Hardball/hardball.tscn"), "icon":preload("res://Scenes/AlchemySpells/Hardball/Images/hardball_icon.png")}, #HardBall
 	Vector3(2,3,0): "Unassigned230",
 	Vector3(3,3,0): "Unassigned330",
 	# X-X-1 -> Topaz

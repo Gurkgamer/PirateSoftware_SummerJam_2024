@@ -20,9 +20,9 @@ var available_ingredients = {
 	"oil" : true,
 	"alcohol" : true,
 	"bone" : false,
-	"leaf" : false,
+	"leaf" : true,
 	"wood" : true,
-	"leather" : false,
+	"leather" : true,
 	"ruby" : true,
 	"topaz" : false,
 	"emerald" : false,
@@ -340,9 +340,7 @@ func _on_texture_button_pressed() -> void:
 	tween.tween_property(formula_notebook, "global_position:x", viewport_size.x / 2 ,0.1)
 
 func _on_return_from_notebook_entries():
-	#FIXME -> Al cerrar el menu de alquimia, este se queda en pantalla a mitad de camino. mirar causa ya arreglar
 	var viewport_size = get_viewport().get_visible_rect().size
-	#formula_notebook.global_position.x = viewport_size.x
 	var tween = create_tween()
 	tween.tween_property(formula_notebook, "global_position:x", viewport_size.x, 0.1)
 	return tween

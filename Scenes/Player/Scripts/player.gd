@@ -5,7 +5,12 @@ signal health_change(new_health : int)
 @onready var body_sprite: AnimatedSprite2D = %BodySprite
 @onready var hand_sprite: AnimatedSprite2D = $HandSprite
 
-var health : int = 100
+var health : int = 100 :
+	get:
+		return health
+	set (value):
+		health = clamp(value, 0, 100)
+		health_change.emit(health)
 const SPEED = 300.0
 var spell_scene : PackedScene
 var knockback_strength : float = 10
@@ -63,11 +68,14 @@ func _input(event: InputEvent) -> void:
 
 func set_spell(spell : PackedScene) -> void:
 	spell_scene = spell
+	
+func take_health(quantity : int) -> void:
+	print("Healing")
+	health += quantity
 
 func take_damage(quantity : int, reason) -> void:
 	if !shield_up :
 		health -= quantity
-		health_change.emit(health)
 	knockback(reason)
 	
 func knockback(body_hit) -> void:
