@@ -50,6 +50,7 @@ BonFire=""
 Shadow=""
 Enemy=""
 AttackSpell=""
+Boss=""
 
 [input]
 

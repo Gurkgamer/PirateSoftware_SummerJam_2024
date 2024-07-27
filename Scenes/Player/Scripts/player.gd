@@ -14,7 +14,7 @@ var speed = 300.0
 var dash_speed = 500.0
 const PLAYER_DASH_TRAIL = preload("res://Scenes/Player/player_dash_trail.tscn")
 var spell_scene : PackedScene
-var knockback_strength : float = 10
+var knockback_strength : float = 5
 var knockback_normalized_direction = Vector2(0,0)
 var shield_up : bool = false
 
@@ -53,7 +53,6 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(dash_trail_instance)
 	
 	%DashCooldown.value = (%DashCooldownTimer.time_left * 100) / %DashCooldownTimer.wait_time
-	print(%DashCooldown.value)
 	%DashCooldown.visible = false if %DashCooldown.value == 0 else true
 	
 	move_and_slide()
@@ -98,7 +97,6 @@ func set_spell(spell : PackedScene) -> void:
 	spell_scene = spell
 	
 func take_health(quantity : int) -> void:
-	print("Healing")
 	health += quantity
 
 func take_damage(quantity : int, reason) -> void:

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dywow7bfmcflm"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Stonedude/Scripts/stonebullet.gd" id="1_l4711"]
+[ext_resource type="Texture2D" uid="uid://ytp3gk7jdwbp" path="res://Scenes/Enemies/Stonedude/Images/bullet.png" id="2_lqbok"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3v8xq"]
+radius = 6.08276
+
+[node name="Stonebullet" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+script = ExtResource("1_l4711")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lqbok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3v8xq")

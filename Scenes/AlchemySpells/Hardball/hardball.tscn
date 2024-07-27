@@ -12,9 +12,9 @@ script = ExtResource("1_n0rrb")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cid3t")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hardball" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hardball"]
 shape = SubResource("CircleShape2D_ojrte")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Hardball" to="." method="_on_area_2d_body_entered"]

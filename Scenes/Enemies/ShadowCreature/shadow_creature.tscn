@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbm75md2kdpr4" path="res://Scenes/Enemies/ShadowCreature/Images/ShadowCreature_sheet.png" id="2_kh84b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f5cou"]
-radius = 283.064
+radius = 384.105
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1jt1"]
 radius = 49.6488

@@ -8,7 +8,6 @@ var formula_name: String
 var formula_combination : Vector3
 
 func _on_assign_button_pressed() -> void:
-	print("emitiendo")
 	assign_notebook_formula.emit(formula_combination)
 
 func set_formula_entry(formula_vector : Vector3, spell_entry) -> void:

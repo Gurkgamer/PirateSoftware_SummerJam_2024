@@ -10,7 +10,7 @@ radius = 17.1172
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nr43c")
 
-[node name="Area2D" type="StaticBody2D" parent="."]
+[node name="Ivy" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ivy"]
 shape = SubResource("CircleShape2D_k3hh5")

@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpiyh1rjlekyb"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Boss/Scripts/boss.gd" id="1_h0yhs"]
+[ext_resource type="Texture2D" uid="uid://bmsl2331p1v0g" path="res://Scenes/Enemies/Boss/Images/boss.png" id="1_r0n54"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oavq3"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(1, 0.5169, 0.383356, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+shadow_color = Color(0.607072, 0.601754, 0, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vplwd"]
+bg_color = Color(0.333333, 0.0156863, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqhhr"]
+size = Vector2(252, 106)
+
+[node name="Boss" type="StaticBody2D" groups=["Boss", "Enemy"]]
+script = ExtResource("1_h0yhs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r0n54")
+
+[node name="ShadowSpawn1" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-152, 90)
+
+[node name="ShadowSpawn2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-42, 91)
+
+[node name="ShadowSpawn3" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(63, 90)
+
+[node name="ShadowSpawn4" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(170, 90)
+
+[node name="StoneSpawn1" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-205, -2)
+
+[node name="StoneSpawn2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(244, 0)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 15.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 4.0
+theme_override_styles/background = SubResource("StyleBoxFlat_oavq3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vplwd")
+value = 100.0
+show_percentage = false
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 1)
+shape = SubResource("RectangleShape2D_eqhhr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-265, 0)
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
