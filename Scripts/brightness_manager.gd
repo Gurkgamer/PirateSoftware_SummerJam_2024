@@ -11,3 +11,6 @@ func _ready() -> void:
 
 func get_brigthness() -> float :
 	return brightness_layer.get_brightness()
+
+func fade_to_black() -> void:
+	brightness_layer.fade_to_black()

@@ -9,6 +9,7 @@ func _ready() -> void:
 	boss = get_tree().get_nodes_in_group("Boss")[0]
 
 func _process(_delta: float) -> void:
+	if end : return
 	number_shadows = 0
 	number_bonfires = get_tree().get_nodes_in_group("BonFire").size()
 	var shadows = get_tree().get_nodes_in_group("Shadow")
@@ -41,3 +42,14 @@ func _process(_delta: float) -> void:
 	
 func get_brightness() -> float:
 	return current_brightness
+
+var end : bool	= false
+const CREDITS = preload("res://Scenes/Credits/credits.tscn")
+
+func fade_to_black():
+	end = true
+	Engine.time_scale = 0.3
+	var tween = create_tween()
+	tween.tween_property(%TextureRect, "modulate:a",1,0.5).finished.connect(func()->void:
+		get_tree().root.add_child(CREDITS.instantiate())
+		)

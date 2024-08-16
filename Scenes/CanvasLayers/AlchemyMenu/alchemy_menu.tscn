@@ -632,7 +632,7 @@ size_flags_horizontal = 3
 [node name="ActiveGaunletButton" type="Button" parent="HBoxContainer/AlchemyContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "SET ACTIVE GAUNLET"
+text = "SET ACTIVE GAUNTLET"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/AlchemyContainer/HBoxContainer"]
 layout_mode = 2

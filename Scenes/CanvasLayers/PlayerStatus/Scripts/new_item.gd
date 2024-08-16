@@ -8,7 +8,7 @@ const STONE_LOOT = preload("res://Scenes/Enemies/Stone/Images/stone_loot.png")
 func show_new_message(what : String) -> void:
 	%NewItemText.text = "You found some " + what
 	match what:
-		"leafs":
+		"leaves":
 			%NewItemIcon.texture = LEAF
 		"vinegar":
 			%NewItemIcon.texture = VINEGAR

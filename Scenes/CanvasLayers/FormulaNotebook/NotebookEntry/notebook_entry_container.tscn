@@ -9,7 +9,7 @@ script = ExtResource("1_hd0qs")
 [node name="AssignButton" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Asignar"
+text = "Assign"
 
 [node name="SpellIcon" type="TextureRect" parent="."]
 unique_name_in_owner = true

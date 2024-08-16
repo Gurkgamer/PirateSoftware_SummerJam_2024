@@ -65,7 +65,7 @@ func play_floating_animation() -> void:
 	shadow_tween.tween_property(shadowstone, "scale:x", original_scale_x, duration)
 
 var bullet_counter : int = 0
-const MAX_BULLETS : int = 5
+const MAX_BULLETS : int = 3
 
 func _on_shoot_timer_timeout() -> void:
 	var new_bullet = STONEBULLET.instantiate()

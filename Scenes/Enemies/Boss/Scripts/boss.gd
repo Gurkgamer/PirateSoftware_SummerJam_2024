@@ -68,9 +68,9 @@ func _on_spawn_timer_timeout() -> void:
 func take_damage(hit_points: int)->void:
 	health -= hit_points
 	if health <= 0:
-		get_tree().root.add_child(CREDITS.instantiate())
+		BrightnessManager.fade_to_black()
 		
-const CREDITS = preload("res://Scenes/Credits/credits.tscn")
+		
 var once : bool = false
 var boss_on_screen : bool = false
 
